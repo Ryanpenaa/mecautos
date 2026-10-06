@@ -8,22 +8,21 @@ import { useEffect, useState } from "react";
 export const Route = createFileRoute("/")({ component: Index });
 
 const platformSlides = [
-  { src: "/plataforma-1.png", label: "Clases organizadas por módulos" },
-  { src: "/plataforma-2.png", label: "Clases prácticas paso a paso" },
-  { src: "/plataforma-3.png", label: "Acceso desde celular o computadora" },
-  { src: "/plataforma-4.png", label: "Contenido disponible cuando quieras" },
+  { src: "/videoaula1.png", label: "Plataforma por dentro" },
+  { src: "/videoaula2.png", label: "Clases organizadas por módulos" },
+  { src: "/videoaula3.png", label: "Sistema de frenos" },
+  { src: "/videoaula4.png", label: "Diagnóstico eléctrico" },
+  { src: "/videoaula5.png", label: "Materiales y recursos" },
+  { src: "/videoaula6.png", label: "Certificado al concluir" },
 ];
 
 const supportSlides = [
-  { src: "/material-1.png", label: "Sistema de Frenos" },
-  { src: "/material-2.png", label: "Sistema de Enfriamiento" },
-  { src: "/material-3.png", label: "Mantenimiento Preventivo y Cambio de Aceite" },
-  { src: "/material-4.png", label: "Checklist de Mantenimiento Preventivo" },
-  { src: "/material-5.png", label: "Guía de Diagnóstico de Fallas" },
-  { src: "/material-6.png", label: "Manual de Herramientas del Mecánico" },
-  { src: "/material-7.png", label: "Guía de Precios de Servicios" },
-  { src: "/material-8.png", label: "Manual de Códigos de Error OBD2" },
-  { src: "/material-9.png", label: "Guía de Inyección Electrónica" },
+  { src: "/apostila1.png", label: "Manual de Mecánica Automotriz" },
+  { src: "/apostila2.png", label: "Sistema de Frenos" },
+  { src: "/apostila3.png", label: "Sistema de Enfriamiento" },
+  { src: "/apostila4.png", label: "Mantenimiento Preventivo" },
+  { src: "/apostila5.png", label: "Diagnóstico de Fallas" },
+  { src: "/apostila6.png", label: "Guías y Checklists" },
 ];
 
 const bonuses = [
@@ -130,6 +129,9 @@ function Index() {
             Curso 100% online con más de 80 clases prácticas en video para aprender motor, frenos, suspensión, inyección electrónica y diagnóstico de fallas.
           </p>
           <div className="mt-8 flex flex-col items-center"><CtaButton /><p className="mt-3 text-xs font-semibold text-slate-500">Acceso inmediato • Compra segura • Garantía de 7 días</p></div>
+          <div className="mx-auto mt-10 max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 p-2 shadow-[0_30px_90px_rgba(0,0,0,.45)]">
+            <img src="/mk.png" alt="Mockup de la Formación en Mecánica Automotriz" className="w-full rounded-2xl object-cover" />
+          </div>
         </div>
       </section>
 
@@ -216,10 +218,31 @@ function Index() {
         </div>
       </section>
 
+      <section className="border-y border-white/10 bg-slate-900/50 px-4 py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Alumnos certificados</p>
+            <h2 className="mt-2 text-3xl font-black sm:text-4xl">Personas que ya completaron su formación</h2>
+            <p className="mt-4 leading-7 text-slate-400">
+              Al finalizar el Plan Profesional, el alumno puede obtener su certificado de finalización.
+            </p>
+          </div>
+          <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-slate-950 p-2 shadow-2xl">
+            <img src="/certificado2.png" alt="Alumnos certificados en Mecánica Automotriz" className="aspect-square w-full rounded-2xl object-cover" />
+          </div>
+          <div className="mt-8 flex flex-col items-center">
+            <CtaButton>QUIERO HACER PARTE</CtaButton>
+            <p className="mt-3 text-xs font-semibold text-slate-500">Formación online • Acceso de por vida • Certificado en el Plan Profesional</p>
+          </div>
+        </div>
+      </section>
+
       <section className="border-y border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 px-4 py-20">
         <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
           <div><p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Profesional</p><h2 className="mt-2 text-3xl font-black sm:text-4xl">Aprende una profesión que está presente en todas las ciudades</h2><p className="mt-5 leading-7 text-slate-400">Con la Formación en Mecánica Automotriz, desarrollas una base práctica para cuidar mejor tu vehículo y comenzar a buscar oportunidades en el área.</p><div className="mt-7"><CtaButton /></div></div>
-          <div className="flex min-h-[320px] items-center justify-center rounded-3xl border border-white/10 bg-slate-900 p-8 text-center"><div><Award className="mx-auto h-16 w-16 text-emerald-400"/><p className="mt-5 text-xl font-black">Certificado de Formación en Mecánica Automotriz</p><p className="mt-2 text-sm text-slate-500">Disponible en el Plan Profesional</p></div></div>
+          <div className="overflow-hidden rounded-3xl border border-white/10 bg-slate-900 p-3 shadow-xl">
+            <img src="/certificado1.png" alt="Certificado de finalización de la Formación en Mecánica Automotriz" className="h-full w-full rounded-2xl object-cover" />
+          </div>
         </div>
       </section>
 
