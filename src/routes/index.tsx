@@ -231,13 +231,21 @@ function Index() {
         </div>
       </section>
 
-      <section className="px-4 py-20">
-        <div className="mx-auto max-w-6xl rounded-3xl border border-amber-300/20 bg-gradient-to-br from-amber-300/[.08] to-transparent p-6 sm:p-10">
-          <div className="inline-flex rounded-full bg-amber-300 px-3 py-1 text-[11px] font-black uppercase tracking-[0.15em] text-slate-950">Exclusivo del Plan Profesional</div>
-          <h2 className="mt-5 max-w-3xl text-3xl font-black sm:text-4xl">Además, recibes bonos exclusivos para complementar tu formación</h2>
-          <p className="mt-4 max-w-3xl leading-7 text-slate-400">Además de la formación principal, recibes materiales de apoyo para diagnosticar mejor, organizar tus servicios, aplicar lo aprendido y acelerar tus resultados en mecánica automotriz.</p>
-          <div className="mt-8 grid gap-3 md:grid-cols-2">
-            {bonuses.map((bonus) => <div key={bonus} className="flex items-start gap-3 rounded-xl border border-white/10 bg-slate-950/70 p-4"><Check className="mt-0.5 h-5 w-5 shrink-0 text-amber-300"/><span className="text-sm font-bold">{bonus}</span></div>)}
+      <section className="px-4 py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl text-center">
+          <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Bonos exclusivos</p>
+          <h2 className="mt-2 text-3xl font-black sm:text-4xl">Incluidos en el Plan Profesional</h2>
+
+          <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-slate-950 p-2 shadow-2xl">
+            <img
+              src="/bonus.png"
+              alt="Bonos exclusivos incluidos en el Plan Profesional"
+              className="w-full rounded-2xl object-cover"
+            />
+          </div>
+
+          <div className="mt-5 text-3xl font-black tracking-wide text-emerald-400 sm:text-4xl">
+            ¡GRATIS!
           </div>
         </div>
       </section>
