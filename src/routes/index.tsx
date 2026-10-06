@@ -135,18 +135,6 @@ function Index() {
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-slate-900/50 px-4 py-16">
-        <div className="mx-auto max-w-6xl">
-          <div className="mb-10 text-center"><p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Lo que recibes</p><h2 className="mt-2 text-3xl font-black sm:text-4xl">Todo lo que necesitas para comenzar a entender la mecánica automotriz</h2></div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <Feature icon={PlayCircle} title="80+ clases prácticas en video" text="Aprende los principales contenidos de mecánica automotriz." />
-            <Feature icon={Gauge} title="Desde cero hasta avanzado" text="Comienza incluso si nunca has trabajado en el área." />
-            <Feature icon={BookOpen} title="Materiales de apoyo" text="Manuales, guías y checklists para acompañar tus estudios." />
-            <Feature icon={InfinityIcon} title="Acceso de por vida" text="Estudia desde tu celular o computadora y repasa cuando quieras." />
-          </div>
-        </div>
-      </section>
-
       <section className="px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-3xl text-center">
