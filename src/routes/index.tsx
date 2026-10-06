@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  Award, BookOpen, Check, ChevronDown, Clock3, Gauge, GraduationCap,
+  BookOpen, Check, ChevronDown, Clock3, Gauge, GraduationCap,
   Infinity as InfinityIcon, Laptop, PlayCircle, ShieldCheck, Smartphone, Star, Wrench
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 
 export const Route = createFileRoute("/")({ component: Index });
 
@@ -48,20 +48,6 @@ const testimonials = [
   },
 ];
 
-const bonuses = [
-  "Manual Completo de Mecánica Automotriz",
-  "Tabla de Torques y Especificaciones",
-  "Checklist de Mantenimiento Preventivo",
-  "Guía de Diagnóstico de Fallas",
-  "Manual de Herramientas del Mecánico",
-  "Guía de Precios de Servicios",
-  "Manual de Códigos de Error OBD2",
-  "Guía de Inyección Electrónica",
-  "Manual de Frenos y Suspensión",
-  "Guía para Conseguir tus Primeros Clientes",
-  "5 manuales complementarios",
-];
-
 const faqs = [
   ["¿Necesito tener experiencia para comenzar?", "No. La formación fue organizada para que puedas comenzar desde cero y avanzar paso a paso."],
   ["¿Cómo recibo el acceso?", "El acceso se libera después de la confirmación de la compra y llega al correo electrónico registrado."],
@@ -100,7 +86,14 @@ function InfiniteCarousel({ slides, support = false }: { slides: { src: string; 
           <div key={item.src + "-" + index} className={"relative shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-slate-900 shadow-xl " + (support ? "w-[220px] sm:w-[270px]" : "w-[270px] sm:w-[360px]")}>
             <div className={"flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800 " + (support ? "aspect-[4/5]" : "aspect-[16/10]")}>
               <span className="max-w-[80%] text-center text-xs font-semibold text-slate-500">{item.label}</span>
-              <img src={item.src} alt={item.label} className="absolute inset-0 h-full w-full object-cover" onError={(e) => { e.currentTarget.style.display = "none"; }} />
+              <img
+                src={item.src}
+                alt={item.label}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover"
+                onError={(e) => { e.currentTarget.style.display = "none"; }}
+              />
             </div>
             <div className="border-t border-white/10 bg-slate-950/90 px-4 py-3 text-sm font-bold text-white">{item.label}</div>
           </div>
@@ -110,22 +103,12 @@ function InfiniteCarousel({ slides, support = false }: { slides: { src: string; 
   );
 }
 
-function Feature({ icon: Icon, title, text }: { icon: typeof PlayCircle; title: string; text: string }) {
-  return (
-    <div className="rounded-2xl border border-white/10 bg-slate-950 p-6">
-      <Icon className="h-8 w-8 text-emerald-400" />
-      <h3 className="mt-5 text-lg font-black">{title}</h3>
-      <p className="mt-2 text-sm leading-6 text-slate-400">{text}</p>
-    </div>
-  );
-}
-
 function Index() {
   const [reviewName, setReviewName] = useState("");
   const [reviewText, setReviewText] = useState("");
   const [reviewSent, setReviewSent] = useState(false);
 
-  function submitReview(event: React.FormEvent<HTMLFormElement>) {
+  function submitReview(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!reviewName.trim() || !reviewText.trim()) return;
     setReviewSent(true);
@@ -139,6 +122,11 @@ function Index() {
         .carousel-track { display:flex; width:max-content; gap:1rem; animation:mec-scroll 32s linear infinite; }
         .carousel-track-slow { animation-duration:48s; }
         .carousel-track:hover { animation-play-state:paused; }
+        .cv-auto { content-visibility:auto; contain-intrinsic-size:1px 900px; }
+        @media (prefers-reduced-motion: reduce) {
+          html { scroll-behavior:auto; }
+          .carousel-track { animation:none; }
+        }
         @keyframes mec-scroll { from { transform:translateX(0); } to { transform:translateX(calc(-50% - .5rem)); } }
       `}</style>
 
@@ -156,7 +144,14 @@ function Index() {
             Conviértete en Mecánico Automotriz: <span className="text-emerald-400">desde cero hasta avanzado</span>
           </h1>
           <div className="mx-auto mt-7 max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 p-2 shadow-[0_30px_90px_rgba(0,0,0,.45)]">
-            <img src="/mk.png" alt="Mockup de la Formación en Mecánica Automotriz" className="w-full rounded-2xl object-cover" />
+            <img
+              src="/mk.png"
+              alt="Mockup de la Formación en Mecánica Automotriz"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="aspect-[4/3] w-full rounded-2xl object-cover"
+            />
           </div>
           <p className="mx-auto mt-7 max-w-3xl text-lg font-semibold text-slate-200 sm:text-xl">
             Kit completo de Formación en Mecánica Automotriz: manuales, módulos y bonos.
@@ -235,7 +230,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="px-4 py-20">
+      <section className="cv-auto px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Plataforma</p>
@@ -253,7 +248,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-slate-900/50 px-4 py-20">
+      <section className="cv-auto border-y border-white/10 bg-slate-900/50 px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Material de apoyo</p>
@@ -264,7 +259,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:py-20">
+      <section className="cv-auto px-4 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl text-center">
           <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Bonos exclusivos</p>
           <h2 className="mt-2 text-3xl font-black sm:text-4xl">Incluidos en el Plan Profesional</h2>
@@ -273,7 +268,9 @@ function Index() {
             <img
               src="/bonus.png"
               alt="Bonos exclusivos incluidos en el Plan Profesional"
-              className="w-full rounded-2xl object-cover"
+              loading="lazy"
+              decoding="async"
+              className="aspect-[4/3] w-full rounded-2xl object-cover"
             />
           </div>
 
@@ -283,7 +280,7 @@ function Index() {
         </div>
       </section>
 
-      <section id="planes" className="border-y border-white/10 bg-slate-900/50 px-4 py-20">
+      <section id="planes" className="cv-auto border-y border-white/10 bg-slate-900/50 px-4 py-20">
         <div className="mx-auto max-w-5xl">
           <div className="text-center"><p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Planes</p><h2 className="mt-2 text-3xl font-black sm:text-4xl">Elige cómo quieres comenzar</h2><p className="mt-3 text-slate-400">Dos opciones para empezar hoy mismo.</p></div>
           <div className="mt-10 grid items-start gap-6 lg:grid-cols-2">
@@ -305,7 +302,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="px-4 py-20">
+      <section className="cv-auto px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <div className="text-center">
             <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Testimonios</p>
@@ -322,6 +319,8 @@ function Index() {
                   <img
                     src={item.image}
                     alt={item.name}
+                    loading="lazy"
+                    decoding="async"
                     className="h-14 w-14 rounded-full border-2 border-emerald-400/30 object-cover"
                   />
                   <div>
@@ -391,7 +390,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-slate-900/50 px-4 py-20">
+      <section className="cv-auto border-y border-white/10 bg-slate-900/50 px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Alumnos certificados</p>
@@ -401,7 +400,7 @@ function Index() {
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-slate-950 p-2 shadow-2xl">
-            <img src="/certificado2.png" alt="Alumnos certificados en Mecánica Automotriz" className="aspect-square w-full rounded-2xl object-cover" />
+            <img src="/certificado2.png" alt="Alumnos certificados en Mecánica Automotriz" loading="lazy" decoding="async" className="aspect-square w-full rounded-2xl object-cover" />
           </div>
           <div className="mt-8 flex flex-col items-center">
             <CtaButton>QUIERO HACER PARTE</CtaButton>
@@ -410,30 +409,41 @@ function Index() {
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 px-4 py-20">
+      <section className="cv-auto border-y border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 px-4 py-20">
         <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
           <div><p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Profesional</p><h2 className="mt-2 text-3xl font-black sm:text-4xl">Aprende una profesión que está presente en todas las ciudades</h2><p className="mt-5 leading-7 text-slate-400">Con la Formación en Mecánica Automotriz, desarrollas una base práctica para cuidar mejor tu vehículo y comenzar a buscar oportunidades en el área.</p><div className="mt-7"><CtaButton /></div></div>
           <div className="overflow-hidden rounded-3xl border border-white/10 bg-slate-900 p-3 shadow-xl">
-            <img src="/certificado1.png" alt="Certificado de finalización de la Formación en Mecánica Automotriz" className="h-full w-full rounded-2xl object-cover" />
+            <img src="/certificado1.png" alt="Certificado de finalización de la Formación en Mecánica Automotriz" loading="lazy" decoding="async" className="aspect-[4/3] h-full w-full rounded-2xl object-cover" />
           </div>
         </div>
       </section>
 
-      <section className="px-4 py-20">
+      <section className="cv-auto px-4 py-20">
         <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
           <div className="rounded-3xl border border-emerald-400/20 bg-emerald-400/[.06] p-7 sm:p-9"><ShieldCheck className="h-10 w-10 text-emerald-400"/><h2 className="mt-5 text-2xl font-black">7 DÍAS DE GARANTÍA</h2><p className="mt-3 leading-7 text-slate-400">Puedes evaluar el contenido dentro del período de garantía y solicitar el reembolso según las condiciones de la compra.</p></div>
-          <div className="rounded-3xl border border-white/10 bg-slate-900 p-7 sm:p-9"><p className="text-sm font-black uppercase tracking-[0.14em] text-emerald-400">Conoce a tu instructor</p><h2 className="mt-3 text-2xl font-black">João Emanuel</h2><p className="mt-4 leading-7 text-slate-400">Profesional del sector automotriz con 16 años de experiencia. João Emanuel reúne conocimiento práctico en mecánica, mantenimiento y diagnóstico de vehículos.</p><p className="mt-3 leading-7 text-slate-400">En esta formación comparte ese conocimiento de forma simple, directa y paso a paso, especialmente para quien comienza desde cero.</p><div className="mt-6 flex flex-wrap gap-2 text-xs font-black">{["16 años de experiencia","Contenido práctico","Enseñanza directa"].map((x)=><span key={x} className="rounded-full border border-white/10 bg-slate-950 px-3 py-2">{x}</span>)}</div></div>
+          <div className="rounded-3xl border border-white/10 bg-slate-900 p-7 sm:p-9">
+            <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
+              <img src="/perfil.png" alt="João Emanuel, instructor de Mecánica Automotriz" loading="lazy" decoding="async" className="h-24 w-24 shrink-0 rounded-full border-2 border-emerald-400/30 object-cover sm:h-28 sm:w-28" />
+              <div>
+                <p className="text-sm font-black uppercase tracking-[0.14em] text-emerald-400">Conoce a tu instructor</p>
+                <h2 className="mt-2 text-2xl font-black">João Emanuel</h2>
+                <p className="mt-3 leading-7 text-slate-400">Profesional del sector automotriz con 16 años de experiencia. João Emanuel reúne conocimiento práctico en mecánica, mantenimiento y diagnóstico de vehículos.</p>
+              </div>
+            </div>
+            <p className="mt-4 text-center leading-7 text-slate-400 sm:text-left">En esta formación comparte ese conocimiento de forma simple, directa y paso a paso, especialmente para quien comienza desde cero.</p>
+            <div className="mt-6 flex flex-wrap justify-center gap-2 text-xs font-black sm:justify-start">{["16 años de experiencia","Contenido práctico","Enseñanza directa"].map((x)=><span key={x} className="rounded-full border border-white/10 bg-slate-950 px-3 py-2">{x}</span>)}</div>
+          </div>
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-slate-900/50 px-4 py-20">
+      <section className="cv-auto border-y border-white/10 bg-slate-900/50 px-4 py-20">
         <div className="mx-auto max-w-4xl">
           <div className="text-center"><p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Preguntas frecuentes</p><h2 className="mt-2 text-3xl font-black sm:text-4xl">Resuelve tus dudas</h2></div>
           <div className="mt-8 space-y-3">{faqs.map(([q,a])=><details key={q} className="group rounded-2xl border border-white/10 bg-slate-950 p-5"><summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">{q}<ChevronDown className="h-5 w-5 shrink-0 text-emerald-400 transition group-open:rotate-180"/></summary><p className="mt-4 pr-8 text-sm leading-6 text-slate-400">{a}</p></details>)}</div>
         </div>
       </section>
 
-      <section className="px-4 py-20 text-center">
+      <section className="cv-auto px-4 py-20 text-center">
         <div className="mx-auto max-w-3xl"><Wrench className="mx-auto h-10 w-10 text-emerald-400"/><h2 className="mt-5 text-3xl font-black sm:text-4xl">Comienza hoy a desarrollar una nueva habilidad</h2><p className="mt-4 text-slate-400">Accede a la Formación en Mecánica Automotriz y comienza tus primeras clases.</p><div className="mt-8 flex flex-col items-center"><CtaButton /><p className="mt-3 text-xs font-semibold text-slate-500">Acceso inmediato • Acceso de por vida • Garantía de 7 días</p></div></div>
       </section>
 
