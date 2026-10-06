@@ -103,8 +103,8 @@ function Index() {
       <style>{`
         html { scroll-behavior: smooth; }
         .carousel-mask { -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); }
-        .carousel-track { display:flex; width:max-content; gap:1rem; animation:mec-scroll 26s linear infinite; }
-        .carousel-track-slow { animation-duration:42s; }
+        .carousel-track { display:flex; width:max-content; gap:1rem; animation:mec-scroll 32s linear infinite; }
+        .carousel-track-slow { animation-duration:48s; }
         .carousel-track:hover { animation-play-state:paused; }
         @keyframes mec-scroll { from { transform:translateX(0); } to { transform:translateX(calc(-50% - .5rem)); } }
       `}</style>
@@ -122,16 +122,16 @@ function Index() {
           <h1 className="mx-auto max-w-4xl text-4xl font-black leading-[1.06] tracking-tight sm:text-6xl">
             Conviértete en Mecánico Automotriz: <span className="text-emerald-400">desde cero hasta avanzado</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-3xl text-lg font-semibold text-slate-200 sm:text-xl">
+          <div className="mx-auto mt-7 max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 p-2 shadow-[0_30px_90px_rgba(0,0,0,.45)]">
+            <img src="/mk.png" alt="Mockup de la Formación en Mecánica Automotriz" className="w-full rounded-2xl object-cover" />
+          </div>
+          <p className="mx-auto mt-7 max-w-3xl text-lg font-semibold text-slate-200 sm:text-xl">
             Kit completo de Formación en Mecánica Automotriz: manuales, módulos y bonos.
           </p>
           <p className="mx-auto mt-3 max-w-3xl text-base leading-7 text-slate-400 sm:text-lg">
             Curso 100% online con más de 80 clases prácticas en video para aprender motor, frenos, suspensión, inyección electrónica y diagnóstico de fallas.
           </p>
           <div className="mt-8 flex flex-col items-center"><CtaButton /><p className="mt-3 text-xs font-semibold text-slate-500">Acceso inmediato • Compra segura • Garantía de 7 días</p></div>
-          <div className="mx-auto mt-10 max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 p-2 shadow-[0_30px_90px_rgba(0,0,0,.45)]">
-            <img src="/mk.png" alt="Mockup de la Formación en Mecánica Automotriz" className="w-full rounded-2xl object-cover" />
-          </div>
         </div>
       </section>
 
