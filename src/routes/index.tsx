@@ -25,6 +25,29 @@ const supportSlides = [
   { src: "/apostila6.png", label: "Guías y Checklists" },
 ];
 
+const testimonials = [
+  {
+    name: "Carlos Mendoza",
+    image: "/aluno2.jfif",
+    text: "Me gustó porque las clases van directo al punto. Ya tenía algo de experiencia, pero ahora entiendo mejor el diagnóstico y el orden correcto para revisar cada sistema.",
+  },
+  {
+    name: "Javier Ramírez",
+    image: "/aluno3.avif",
+    text: "Lo estoy haciendo después del trabajo y puedo avanzar a mi ritmo. Los materiales me ayudan bastante porque vuelvo a consultar cuando estoy practicando.",
+  },
+  {
+    name: "Miguel Torres",
+    image: "/aluno4.jfif",
+    text: "Empecé sin saber casi nada de mecánica. Las explicaciones son claras y me dieron más confianza para hacer mantenimiento básico y entender mejor mi vehículo.",
+  },
+  {
+    name: "Sofía Herrera",
+    image: "/alunomulher.avif",
+    text: "Pensé que iba a ser complicado, pero está muy bien organizado. Me gustaron especialmente las clases de frenos, diagnóstico eléctrico y los checklists de apoyo.",
+  },
+];
+
 const bonuses = [
   "Manual Completo de Mecánica Automotriz",
   "Tabla de Torques y Especificaciones",
@@ -98,6 +121,16 @@ function Feature({ icon: Icon, title, text }: { icon: typeof PlayCircle; title: 
 }
 
 function Index() {
+  const [reviewName, setReviewName] = useState("");
+  const [reviewText, setReviewText] = useState("");
+  const [reviewSent, setReviewSent] = useState(false);
+
+  function submitReview(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!reviewName.trim() || !reviewText.trim()) return;
+    setReviewSent(true);
+  }
+
   return (
     <main className="min-h-screen bg-slate-950 text-white selection:bg-emerald-400 selection:text-slate-950">
       <style>{`
@@ -274,9 +307,86 @@ function Index() {
 
       <section className="px-4 py-20">
         <div className="mx-auto max-w-6xl">
-          <div className="text-center"><p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Testimonios</p><h2 className="mt-2 text-3xl font-black sm:text-4xl">Lo que dicen nuestros alumnos</h2><p className="mx-auto mt-4 max-w-3xl text-slate-400">Mensajes de alumnos que ya están aprovechando la Formación Profesional en Mecánica Automotriz.</p></div>
-          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {["Contenido directo y fácil de entender","Más organización para quien ya trabaja en el área","Certificado, bonos y manuales de apoyo","Más conocimiento para ahorrar en el mantenimiento del auto"].map((x,i)=><div key={x} className="rounded-2xl border border-white/10 bg-slate-900 p-5"><div className="flex gap-1 text-amber-300">{Array.from({length:5}).map((_,j)=><Star key={j} className="h-4 w-4 fill-current"/>)}</div><p className="mt-5 text-sm font-bold leading-6">{x}</p><p className="mt-4 text-xs text-slate-500">Alumno {i+1} • Formación Mecánica Automotriz</p></div>)}
+          <div className="text-center">
+            <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Testimonios</p>
+            <h2 className="mt-2 text-3xl font-black sm:text-4xl">Experiencias de nuestros alumnos</h2>
+            <p className="mx-auto mt-4 max-w-3xl text-slate-400">
+              Opiniones compartidas sobre la experiencia de aprendizaje dentro de la formación.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {testimonials.map((item) => (
+              <article key={item.name} className="rounded-2xl border border-white/10 bg-slate-900 p-5 shadow-lg">
+                <div className="flex items-center gap-3">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="h-14 w-14 rounded-full border-2 border-emerald-400/30 object-cover"
+                  />
+                  <div>
+                    <p className="font-black text-white">{item.name}</p>
+                    <p className="text-xs text-slate-500">Alumno • Mecánica Automotriz</p>
+                  </div>
+                </div>
+
+                <div className="mt-4 flex gap-1 text-amber-300">
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <Star key={index} className="h-4 w-4 fill-current" />
+                  ))}
+                </div>
+
+                <p className="mt-4 text-sm leading-6 text-slate-300">
+                  “{item.text}”
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <div className="mx-auto mt-12 max-w-2xl rounded-3xl border border-white/10 bg-slate-900/70 p-6 sm:p-8">
+            <div className="text-center">
+              <p className="text-sm font-black uppercase tracking-[0.14em] text-emerald-400">Tu opinión también cuenta</p>
+              <h3 className="mt-2 text-2xl font-black">Deja tu testimonio</h3>
+              <p className="mt-2 text-sm leading-6 text-slate-400">
+                Cuéntanos brevemente cómo fue tu experiencia con la formación.
+              </p>
+            </div>
+
+            <form onSubmit={submitReview} className="mt-6 space-y-4">
+              <input
+                type="text"
+                value={reviewName}
+                onChange={(event) => setReviewName(event.target.value)}
+                disabled={reviewSent}
+                required
+                maxLength={60}
+                placeholder="Tu nombre"
+                className="w-full rounded-xl border border-white/10 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-emerald-400 disabled:cursor-not-allowed disabled:opacity-50"
+              />
+              <textarea
+                value={reviewText}
+                onChange={(event) => setReviewText(event.target.value)}
+                disabled={reviewSent}
+                required
+                maxLength={500}
+                rows={5}
+                placeholder="Escribe tu testimonio aquí..."
+                className="w-full resize-none rounded-xl border border-white/10 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-emerald-400 disabled:cursor-not-allowed disabled:opacity-50"
+              />
+
+              {reviewSent ? (
+                <div className="rounded-xl border border-emerald-400/20 bg-emerald-400/10 px-4 py-4 text-center text-sm font-bold text-emerald-300">
+                  ✓ Testimonio enviado. ¡Gracias por compartir tu experiencia!
+                </div>
+              ) : (
+                <button
+                  type="submit"
+                  className="inline-flex min-h-12 w-full items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 text-sm font-black text-white transition hover:bg-emerald-400"
+                >
+                  ENVIAR TESTIMONIO
+                </button>
+              )}
+            </form>
           </div>
         </div>
       </section>
