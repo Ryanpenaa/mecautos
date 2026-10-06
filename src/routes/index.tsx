@@ -135,6 +135,73 @@ function Index() {
         </div>
       </section>
 
+      <section className="border-y border-white/10 bg-slate-900/50 px-4 py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Tu formación completa</p>
+            <h2 className="mt-2 text-3xl font-black sm:text-4xl">
+              Todo lo que necesitas para aprender mecánica automotriz desde cero
+            </h2>
+            <p className="mt-4 leading-7 text-slate-400">
+              Aprende paso a paso, practica con contenido directo y consulta los materiales siempre que lo necesites.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-2xl border border-white/10 bg-slate-950 p-6 shadow-lg">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-400/10">
+                <PlayCircle className="h-7 w-7 text-emerald-400" />
+              </div>
+              <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-emerald-300">Aprende viendo</p>
+              <h3 className="mt-2 text-xl font-black">80+ clases prácticas en video</h3>
+              <p className="mt-3 text-sm leading-6 text-slate-400">
+                Motor, frenos, suspensión, electricidad, inyección y diagnóstico explicados de forma directa.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-slate-950 p-6 shadow-lg">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-400/10">
+                <Gauge className="h-7 w-7 text-emerald-400" />
+              </div>
+              <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-emerald-300">Paso a paso</p>
+              <h3 className="mt-2 text-xl font-black">De principiante a nivel avanzado</h3>
+              <p className="mt-3 text-sm leading-6 text-slate-400">
+                Empieza desde lo básico aunque nunca hayas trabajado con mecánica y avanza a tu propio ritmo.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-slate-950 p-6 shadow-lg">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-400/10">
+                <BookOpen className="h-7 w-7 text-emerald-400" />
+              </div>
+              <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-emerald-300">Consulta cuando quieras</p>
+              <h3 className="mt-2 text-xl font-black">Manuales, guías y checklists</h3>
+              <p className="mt-3 text-sm leading-6 text-slate-400">
+                Materiales de apoyo para revisar procedimientos, diagnósticos y tareas prácticas dentro y fuera del taller.
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-emerald-400/20 bg-gradient-to-br from-emerald-400/[.08] to-slate-950 p-6 shadow-lg">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-400/10">
+                <InfinityIcon className="h-7 w-7 text-emerald-400" />
+              </div>
+              <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-emerald-300">Sin prisa</p>
+              <h3 className="mt-2 text-xl font-black">Acceso de por vida</h3>
+              <p className="mt-3 text-sm leading-6 text-slate-400">
+                Estudia desde celular, tablet o computadora y vuelve a las clases todas las veces que necesites.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-bold text-slate-500">
+            <span>✓ 100% online</span>
+            <span>✓ Acceso inmediato</span>
+            <span>✓ Estudia a tu ritmo</span>
+            <span>✓ Garantía de 7 días</span>
+          </div>
+        </div>
+      </section>
+
       <section className="px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-3xl text-center">
