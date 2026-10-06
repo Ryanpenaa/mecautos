@@ -255,15 +255,15 @@ function Index() {
           <div className="text-center"><p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Planes</p><h2 className="mt-2 text-3xl font-black sm:text-4xl">Elige cómo quieres comenzar</h2><p className="mt-3 text-slate-400">Dos opciones para empezar hoy mismo.</p></div>
           <div className="mt-10 grid items-start gap-6 lg:grid-cols-2">
             <div className="rounded-3xl border border-white/10 bg-slate-950 p-7">
-              <p className="text-sm font-bold text-slate-400">Para quien quiere comenzar</p><h3 className="mt-2 text-2xl font-black">Plan Básico</h3><div className="mt-5 text-5xl font-black">R$10,00</div>
+              <p className="text-sm font-bold text-slate-400">Para quien quiere comenzar</p><h3 className="mt-2 text-2xl font-black">Plan Básico</h3><div className="mt-5 text-5xl font-black">US$5</div><p className="mt-2 text-xs font-semibold text-slate-500">El valor se convierte automáticamente a tu moneda al momento del pago.</p>
               <div className="mt-6 space-y-3">{["80+ clases en video","Contenido 100% online","Acceso de por vida"].map((x)=><div key={x} className="flex gap-3 text-sm font-semibold"><Check className="h-5 w-5 text-emerald-400"/>{x}</div>)}</div>
               <a href="#" className="mt-7 inline-flex w-full items-center justify-center rounded-xl border border-white/20 px-5 py-4 text-sm font-black hover:bg-white/5">EMPEZAR CON EL BÁSICO</a>
             </div>
             <div className="relative rounded-3xl border-2 border-emerald-400 bg-slate-950 p-7 shadow-[0_20px_70px_rgba(16,185,129,.18)]">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-emerald-400 px-5 py-2 text-xs font-black text-slate-950">MÁS VENDIDO</div>
-              <p className="mt-2 text-sm font-bold text-emerald-300">Formación completa + materiales</p><h3 className="mt-2 text-2xl font-black">Plan Profesional</h3><div className="mt-5 text-5xl font-black">R$27,90</div>
+              <p className="mt-2 text-sm font-bold text-emerald-300">Formación completa + materiales</p><h3 className="mt-2 text-2xl font-black">Plan Profesional</h3><div className="mt-5 text-5xl font-black">US$12</div><p className="mt-2 text-xs font-semibold text-slate-500">El valor se convierte automáticamente a tu moneda al momento del pago.</p>
               <div className="mt-6 space-y-3">{["80+ clases en video","Certificado de finalización","Acceso de por vida","Materiales de apoyo","10 bonos incluidos","5 manuales complementarios"].map((x)=><div key={x} className="flex gap-3 text-sm font-semibold"><Check className="h-5 w-5 text-emerald-400"/>{x}</div>)}</div>
-              <div className="mt-6 rounded-xl bg-emerald-400/10 p-4 text-sm font-bold leading-6 text-emerald-200">Por solo R$17,90 adicionales recibes certificado, materiales de apoyo, guías y bonos.</div>
+              <div className="mt-6 rounded-xl bg-emerald-400/10 p-4 text-sm font-bold leading-6 text-emerald-200">Por solo US$7 adicionales recibes certificado, materiales de apoyo, guías y bonos.</div>
               <p className="mt-4 text-sm font-bold">Nuestra recomendación para quien quiere aprovechar la formación completa.</p>
               <a href="#" className="mt-7 inline-flex min-h-14 w-full items-center justify-center rounded-xl bg-emerald-500 px-5 py-4 text-center text-sm font-black text-white hover:bg-emerald-400">QUIERO EL PLAN PROFESIONAL</a>
               <p className="mt-3 text-center text-xs font-semibold text-slate-500">Acceso inmediato • Compra segura • Garantía de 7 días</p>
