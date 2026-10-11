@@ -17,6 +17,7 @@ const platformSlides = [
 ];
 
 const BASIC_CHECKOUT_URL = "https://pay.hotmart.com/B107921531Y?off=oba9nu0s";
+const PROFESSIONAL_CHECKOUT_URL = import.meta.env.VITE_HOTMART_PRO_13_URL?.trim() || "";
 
 const supportSlides = [
   { src: "/apostila1.png", label: "Manual de Mecánica Automotriz" },
@@ -339,15 +340,15 @@ function Index() {
               <p className="mt-2 text-sm font-bold text-emerald-300">Formación completa + materiales</p><h3 className="mt-2 text-2xl font-black">Plan Profesional</h3><div className="mt-5 text-5xl font-black">US$13</div><p className="mt-2 text-xs font-semibold text-slate-500">El valor se convierte automáticamente a tu moneda al momento del pago.</p>
               <div className="mt-6 space-y-3">{["80+ clases en video","Certificado de finalización","Acceso de por vida","Materiales de apoyo","10 bonos incluidos","5 manuales complementarios"].map((x)=><div key={x} className="flex gap-3 text-sm font-semibold"><Check className="h-5 w-5 text-emerald-400"/>{x}</div>)}</div>
               <p className="mt-4 text-sm font-bold">Nuestra recomendación para quien quiere aprovechar la formación completa.</p>
-              <a
-                href={buildCheckoutUrl("https://pay.hotmart.com/B107921531Y?off=6x5do37i")}
+              {PROFESSIONAL_CHECKOUT_URL ? <a
+                href={buildCheckoutUrl(PROFESSIONAL_CHECKOUT_URL)}
                 onClick={() => trackMetaEvent("InitiateCheckout", {
                   content_name: "Formación en Mecánica Automotriz - Plan Profesional",
                   content_ids: ["mecanica-automotriz-profesional"],
                   content_type: "product", currency: "USD", value: 13, num_items: 1
                 })}
                 className="mt-7 inline-flex min-h-14 w-full items-center justify-center rounded-xl bg-emerald-500 px-5 py-4 text-center text-sm font-black text-white hover:bg-emerald-400"
-              >QUIERO EL PLAN COMPLETO</a>
+              >QUIERO EL PLAN COMPLETO</a> : <div role="status" className="mt-7 rounded-xl border border-amber-300/30 bg-amber-300/10 p-4 text-center text-sm font-bold text-amber-200">Plan Profesional de US$13: enlace de pago pendiente de configuración.</div>}
               <p className="mt-3 text-center text-xs font-semibold text-slate-500">Acceso inmediato • Compra segura • Garantía de 7 días</p>
             </div>
           </div>
