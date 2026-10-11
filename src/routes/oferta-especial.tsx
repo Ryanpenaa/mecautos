@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Check, ShieldCheck, ArrowLeft, Clock3 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Check, ShieldCheck, ArrowLeft } from "lucide-react";
+import { useEffect } from "react";
 
 export const Route = createFileRoute("/oferta-especial")({ component: OfertaEspecial });
 
@@ -32,22 +32,6 @@ function track(eventName: string, value: number, id: string) {
 }
 
 function OfertaEspecial() {
-  const [remaining, setRemaining] = useState<number | null>(null);
-  useEffect(() => {
-    const key = "mecautos-upgrade-offer-expiry";
-    let deadline = Number(window.sessionStorage.getItem(key));
-    if (!Number.isFinite(deadline) || deadline <= 0) {
-      deadline = Date.now() + 15 * 60 * 1000;
-      window.sessionStorage.setItem(key, String(deadline));
-    }
-    const update = () => setRemaining(Math.max(0, Math.ceil((deadline - Date.now()) / 1000)));
-    update();
-    const timer = window.setInterval(update, 1000);
-    return () => window.clearInterval(timer);
-  }, []);
-  const expired = remaining !== null && remaining === 0;
-  const timeLabel = remaining === null ? "--:--" : `${String(Math.floor(remaining / 60)).padStart(2, "0")}:${String(remaining % 60).padStart(2, "0")}`;
-
   useEffect(() => {
     track("ViewContent", 9, "mecanica-automotriz-oferta-especial");
   }, []);
@@ -59,10 +43,6 @@ function OfertaEspecial() {
           <span className="inline-flex rounded-full border border-amber-300/30 bg-amber-300/10 px-4 py-2 text-xs font-black uppercase tracking-wider text-amber-300">Oferta exclusiva antes de finalizar tu compra</span>
           <h1 className="mt-5 text-3xl font-black leading-tight sm:text-4xl">¡Espera! Mejora tu formación por solo <span className="text-emerald-400">US$4 más</span></h1>
           <p className="mt-4 text-slate-300">Elegiste el Plan Básico de US$5. Por esta oferta especial puedes llevarte el Plan Profesional completo por solo US$9.</p>
-        </div>
-        <div className="mb-5 rounded-2xl border border-amber-300/25 bg-amber-300/10 px-5 py-4 text-center" role="timer" aria-label="Tiempo restante para esta oferta">
-          <p className="flex items-center justify-center gap-2 text-sm font-bold text-amber-200"><Clock3 className="h-4 w-4"/> {expired ? "El tiempo de esta oferta ha terminado" : "Tiempo restante para aprovechar esta oferta"}</p>
-          <p className="mt-1 text-4xl font-black tabular-nums text-white">{timeLabel}</p>
         </div>
         <div className="rounded-3xl border-2 border-emerald-400 bg-slate-900 p-6 shadow-[0_20px_70px_rgba(16,185,129,.12)] sm:p-8">
           <div className="flex items-center justify-between gap-3">
@@ -79,9 +59,7 @@ function OfertaEspecial() {
               <div key={item} className="flex items-start gap-3 text-sm font-semibold"><Check className="h-5 w-5 shrink-0 text-emerald-400"/><span>{item}</span></div>
             ))}
           </div>
-          {expired ? (
-            <div role="status" className="mt-8 rounded-xl border border-white/20 bg-white/5 p-4 text-center text-sm font-bold text-slate-300">Esta oferta especial ha finalizado. Puedes continuar con el Plan Básico de US$5.</div>
-          ) : PROMO_CHECKOUT_URL ? (
+          {PROMO_CHECKOUT_URL ? (
             <a href={checkoutUrl(PROMO_CHECKOUT_URL)}
               onClick={() => track("InitiateCheckout", 9, "mecanica-automotriz-profesional-oferta")}
               className="mt-8 flex min-h-14 w-full items-center justify-center rounded-xl bg-emerald-500 px-4 py-4 text-center text-sm font-black text-white transition hover:bg-emerald-400">
