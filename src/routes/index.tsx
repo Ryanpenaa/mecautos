@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState, type FormEvent } from "react";
 
-export const Route = createFileRoute("/")({ component: Index });
+export const Route = createFileRoute("/")({ component: Index, head: () => ({ links: [{ rel: "preload", as: "image", href: "/mk.png", fetchPriority: "high" }] }) });
 
 const platformSlides = [
   { src: "/videoaula1.png", label: "Plataforma por dentro" },
@@ -94,6 +94,7 @@ function InfiniteCarousel({ slides, support = false }: { slides: { src: string; 
                 alt={item.label}
                 loading="lazy"
                 decoding="async"
+                fetchPriority="low"
                 className="absolute inset-0 h-full w-full object-cover"
                 onError={(e) => { e.currentTarget.style.display = "none"; }}
               />
@@ -310,6 +311,7 @@ function Index() {
               alt="Bonos exclusivos incluidos en el Plan Profesional"
               loading="lazy"
               decoding="async"
+              fetchPriority="low"
               className="aspect-[4/3] w-full rounded-2xl object-cover"
             />
           </div>
@@ -453,7 +455,7 @@ function Index() {
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-slate-950 p-2 shadow-2xl">
-            <img src="/certificado2.png" alt="Alumnos certificados en Mecánica Automotriz" loading="lazy" decoding="async" className="aspect-square w-full rounded-2xl object-cover" />
+            <img src="/certificado2.png" alt="Alumnos certificados en Mecánica Automotriz" loading="lazy" decoding="async" fetchPriority="low" className="aspect-square w-full rounded-2xl object-cover" />
           </div>
           <div className="mt-8 flex flex-col items-center">
             <CtaButton>QUIERO HACER PARTE</CtaButton>
