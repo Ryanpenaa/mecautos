@@ -4,8 +4,8 @@ import { useEffect } from "react";
 
 export const Route = createFileRoute("/oferta-especial")({ component: OfertaEspecial });
 
-const BASIC_CHECKOUT_URL = "https://pay.hotmart.com/B107921531Y?off=oba9nu0s";
-const PROMO_CHECKOUT_URL = import.meta.env.VITE_HOTMART_PRO_9_URL?.trim() || "";
+const BASIC_CHECKOUT_URL = "https://pay.hotmart.com/B107921531Y?off=oba9nu0s&checkoutMode=10";
+const PROMO_CHECKOUT_URL = "https://pay.hotmart.com/B107921531Y?off=d9hnft5h&checkoutMode=10";
 
 function checkoutUrl(base: string) {
   if (typeof window === "undefined") return base;
