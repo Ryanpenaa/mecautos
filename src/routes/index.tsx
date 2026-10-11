@@ -16,8 +16,8 @@ const platformSlides = [
   { src: "/videoaula6.png", label: "Certificado al concluir" },
 ];
 
-const BASIC_CHECKOUT_URL = "https://pay.hotmart.com/B107921531Y?off=oba9nu0s";
-const PROFESSIONAL_CHECKOUT_URL = import.meta.env.VITE_HOTMART_PRO_13_URL?.trim() || "";
+const BASIC_CHECKOUT_URL = "https://pay.hotmart.com/B107921531Y?off=oba9nu0s&checkoutMode=10";
+const PROFESSIONAL_CHECKOUT_URL = "https://pay.hotmart.com/B107921531Y?off=6x5do37i&checkoutMode=10";
 
 const supportSlides = [
   { src: "/apostila1.png", label: "Manual de Mecánica Automotriz" },
