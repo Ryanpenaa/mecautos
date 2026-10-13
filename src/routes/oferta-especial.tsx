@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Check, ShieldCheck, ArrowLeft } from "lucide-react";
 import { useEffect } from "react";
 
-export const Route = createFileRoute("/oferta-especial")({ component: OfertaEspecial });
+export const Route = createFileRoute("/oferta-especial")({ component: OfertaEspecial, head: () => ({ meta: [{ title: "Oferta especial del Plan Profesional | MEC Autos" }, { name: "description", content: "Consulta la oferta especial para mejorar tu formación en mecánica automotriz al Plan Profesional." }, { property: "og:title", content: "Oferta especial del Plan Profesional | MEC Autos" }, { property: "og:description", content: "Accede a la oferta de mejora al Plan Profesional de MEC Autos." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }) });
 
 const BASIC_CHECKOUT_URL = "https://pay.hotmart.com/B107921531Y?off=oba9nu0s&checkoutMode=10";
 const PROMO_CHECKOUT_URL = "https://pay.hotmart.com/B107921531Y?off=d9hnft5h&checkoutMode=10";

@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState, type FormEvent } from "react";
 
-export const Route = createFileRoute("/")({ component: Index, head: () => ({ links: [{ rel: "preload", as: "image", href: "/mk.png", fetchPriority: "high" }] }) });
+export const Route = createFileRoute("/")({ component: Index, head: () => ({ meta: [{ title: "Formación en Mecánica Automotriz | MEC Autos" }, { name: "description", content: "Formación en mecánica automotriz desde cero: compara los planes, materiales y bonos de MEC Autos." }, { property: "og:title", content: "Formación en Mecánica Automotriz | MEC Autos" }, { property: "og:description", content: "Compara los planes de formación en mecánica automotriz y sus materiales de apoyo." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "preload", as: "image", href: "/mk.png", fetchPriority: "high" }] }) });
 
 const platformSlides = [
   { src: "/videoaula1.png", label: "Plataforma por dentro" },
@@ -196,9 +196,6 @@ function Index() {
           </div>
           <p className="mx-auto mt-7 max-w-3xl text-lg font-semibold text-slate-200 sm:text-xl">
             Kit completo de Formación en Mecánica Automotriz: manuales, módulos y bonos.
-          </p>
-          <p className="mx-auto mt-3 max-w-3xl text-base leading-7 text-slate-400 sm:text-lg">
-            Curso 100% online con más de 80 clases prácticas en video para aprender motor, frenos, suspensión, inyección electrónica y diagnóstico de fallas.
           </p>
           <div className="mt-8 flex flex-col items-center"><CtaButton /><p className="mt-3 text-xs font-semibold text-slate-500">Acceso inmediato • Compra segura • Garantía de 7 días</p></div>
         </div>
