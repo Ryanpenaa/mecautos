@@ -3,29 +3,29 @@ import {
   BookOpen, Check, ChevronDown, Clock3, Gauge, GraduationCap,
   Infinity as InfinityIcon, Laptop, PlayCircle, ShieldCheck, Smartphone, Star, Wrench
 } from "lucide-react";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 
-export const Route = createFileRoute("/")({ component: Index, head: () => ({ meta: [{ title: "Formación en Mecánica Automotriz | MEC Autos" }, { name: "description", content: "Formación en mecánica automotriz desde cero: compara los planes, materiales y bonos de MEC Autos." }, { property: "og:title", content: "Formación en Mecánica Automotriz | MEC Autos" }, { property: "og:description", content: "Compara los planes de formación en mecánica automotriz y sus materiales de apoyo." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "preload", as: "image", href: "/mk.png", fetchPriority: "high" }] }) });
+export const Route = createFileRoute("/")({ component: Index, head: () => ({ meta: [{ title: "Formación en Mecánica Automotriz | MEC Autos" }, { name: "description", content: "Formación en mecánica automotriz desde cero: compara los planes, materiales y bonos de MEC Autos." }, { property: "og:title", content: "Formación en Mecánica Automotriz | MEC Autos" }, { property: "og:description", content: "Compara los planes de formación en mecánica automotriz y sus materiales de apoyo." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "preload", as: "image", href: "/mk.webp", fetchPriority: "high" }] }) });
 
 const platformSlides = [
-  { src: "/videoaula1.png", label: "Plataforma por dentro" },
-  { src: "/videoaula2.png", label: "Clases organizadas por módulos" },
-  { src: "/videoaula3.png", label: "Sistema de frenos" },
-  { src: "/videoaula4.png", label: "Diagnóstico eléctrico" },
-  { src: "/videoaula5.png", label: "Materiales y recursos" },
-  { src: "/videoaula6.png", label: "Certificado al concluir" },
+  { src: "/videoaula1.webp", label: "Plataforma por dentro" },
+  { src: "/videoaula2.webp", label: "Clases organizadas por módulos" },
+  { src: "/videoaula3.webp", label: "Sistema de frenos" },
+  { src: "/videoaula4.webp", label: "Diagnóstico eléctrico" },
+  { src: "/videoaula5.webp", label: "Materiales y recursos" },
+  { src: "/videoaula6.webp", label: "Certificado al concluir" },
 ];
 
 const BASIC_CHECKOUT_URL = "https://pay.hotmart.com/B107921531Y?off=oba9nu0s&checkoutMode=10";
 const PROFESSIONAL_CHECKOUT_URL = "https://pay.hotmart.com/B107921531Y?off=6x5do37i&checkoutMode=10";
 
 const supportSlides = [
-  { src: "/apostila1.png", label: "Manual de Mecánica Automotriz" },
-  { src: "/apostila2.png", label: "Sistema de Frenos" },
-  { src: "/apostila3.png", label: "Sistema de Enfriamiento" },
-  { src: "/apostila4.png", label: "Mantenimiento Preventivo" },
-  { src: "/apostila5.png", label: "Diagnóstico de Fallas" },
-  { src: "/apostila6.png", label: "Guías y Checklists" },
+  { src: "/apostila1.webp", label: "Manual de Mecánica Automotriz" },
+  { src: "/apostila2.webp", label: "Sistema de Frenos" },
+  { src: "/apostila3.webp", label: "Sistema de Enfriamiento" },
+  { src: "/apostila4.webp", label: "Mantenimiento Preventivo" },
+  { src: "/apostila5.webp", label: "Diagnóstico de Fallas" },
+  { src: "/apostila6.webp", label: "Guías y Checklists" },
 ];
 
 const testimonials = [
@@ -81,17 +81,36 @@ function CtaButton({ children = "QUIERO EMPEZAR AHORA" }: { children?: string })
 }
 
 function InfiniteCarousel({ slides, support = false }: { slides: { src: string; label: string }[]; support?: boolean }) {
+  const container = useRef<HTMLDivElement>(null);
+  const [nearViewport, setNearViewport] = useState(false);
+  useEffect(() => {
+    const element = container.current;
+    if (!element) return;
+    if (!("IntersectionObserver" in window)) {
+      setNearViewport(true);
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry?.isIntersecting) return;
+      setNearViewport(true);
+      observer.disconnect();
+    }, { rootMargin: "600px" });
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
   const items = [...slides, ...slides];
   return (
-    <div className="carousel-mask overflow-hidden">
+    <div ref={container} className="carousel-mask overflow-hidden">
       <div className={"carousel-track " + (support ? "carousel-track-slow" : "")}>
         {items.map((item, index) => (
           <div key={item.src + "-" + index} className={"relative shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-slate-900 shadow-xl " + (support ? "w-[220px] sm:w-[270px]" : "w-[270px] sm:w-[360px]")}>
             <div className={"flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800 " + (support ? "aspect-[4/5]" : "aspect-[16/10]")}>
               <span className="max-w-[80%] text-center text-xs font-semibold text-slate-500">{item.label}</span>
               <img
-                src={item.src}
+                src={nearViewport ? item.src : undefined}
                 alt={item.label}
+                width={support ? 1055 : 1672}
+                height={support ? 1491 : 941}
                 loading="lazy"
                 decoding="async"
                 fetchPriority="low"
@@ -186,7 +205,9 @@ function Index() {
           </h1>
           <div className="mx-auto mt-7 max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 p-2 shadow-[0_30px_90px_rgba(0,0,0,.45)]">
             <img
-              src="/mk.png"
+              src="/mk.webp"
+              width={1448}
+              height={1086}
               alt="Mockup de la Formación en Mecánica Automotriz"
               loading="eager"
               fetchPriority="high"
@@ -304,7 +325,9 @@ function Index() {
 
           <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-slate-950 p-2 shadow-2xl">
             <img
-              src="/bonus.png"
+              src="/bonus.webp"
+              width={1448}
+              height={1086}
               alt="Bonos exclusivos incluidos en el Plan Profesional"
               loading="lazy"
               decoding="async"
@@ -370,6 +393,8 @@ function Index() {
                 <div className="flex items-center gap-3">
                   <img
                     src={item.image}
+                    width={56}
+                    height={56}
                     alt={item.name}
                     loading="lazy"
                     decoding="async"
@@ -452,7 +477,7 @@ function Index() {
             </p>
           </div>
           <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-slate-950 p-2 shadow-2xl">
-            <img src="/certificado2.png" alt="Alumnos certificados en Mecánica Automotriz" loading="lazy" decoding="async" fetchPriority="low" className="aspect-square w-full rounded-2xl object-cover" />
+            <img src="/certificado2.webp" width={1254} height={1254} alt="Alumnos certificados en Mecánica Automotriz" loading="lazy" decoding="async" fetchPriority="low" className="aspect-square w-full rounded-2xl object-cover" />
           </div>
           <div className="mt-8 flex flex-col items-center">
             <CtaButton>QUIERO HACER PARTE</CtaButton>
@@ -465,7 +490,7 @@ function Index() {
         <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
           <div><p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Profesional</p><h2 className="mt-2 text-3xl font-black sm:text-4xl">Aprende una profesión que está presente en todas las ciudades</h2><p className="mt-5 leading-7 text-slate-400">Con la Formación en Mecánica Automotriz, desarrollas una base práctica para cuidar mejor tu vehículo y comenzar a buscar oportunidades en el área.</p><div className="mt-7"><CtaButton /></div></div>
           <div className="overflow-hidden rounded-3xl border border-white/10 bg-slate-900 p-3 shadow-xl">
-            <img src="/certificado1.png" alt="Certificado de finalización de la Formación en Mecánica Automotriz" loading="lazy" decoding="async" className="aspect-[4/3] h-full w-full rounded-2xl object-cover" />
+            <img src="/certificado1.webp" width={1448} height={1086} alt="Certificado de finalización de la Formación en Mecánica Automotriz" loading="lazy" decoding="async" className="aspect-[4/3] h-full w-full rounded-2xl object-cover" />
           </div>
         </div>
       </section>
@@ -475,7 +500,7 @@ function Index() {
           <div className="rounded-3xl border border-emerald-400/20 bg-emerald-400/[.06] p-7 sm:p-9"><ShieldCheck className="h-10 w-10 text-emerald-400"/><h2 className="mt-5 text-2xl font-black">7 DÍAS DE GARANTÍA</h2><p className="mt-3 leading-7 text-slate-400">Puedes evaluar el contenido dentro del período de garantía y solicitar el reembolso según las condiciones de la compra.</p></div>
           <div className="rounded-3xl border border-white/10 bg-slate-900 p-7 sm:p-9">
             <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
-              <img src="/perfil.png" alt="João Emanuel, instructor de Mecánica Automotriz" loading="lazy" decoding="async" className="h-24 w-24 shrink-0 rounded-full border-2 border-emerald-400/30 object-cover sm:h-28 sm:w-28" />
+              <img src="/perfil.webp" width={1254} height={1254} alt="João Emanuel, instructor de Mecánica Automotriz" loading="lazy" decoding="async" className="h-24 w-24 shrink-0 rounded-full border-2 border-emerald-400/30 object-cover sm:h-28 sm:w-28" />
               <div>
                 <p className="text-sm font-black uppercase tracking-[0.14em] text-emerald-400">Conoce a tu instructor</p>
                 <h2 className="mt-2 text-2xl font-black">João Emanuel</h2>
