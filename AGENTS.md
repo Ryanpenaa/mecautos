@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Prerender only the explicitly listed public, visitor-independent pages to avoid per-request rendering without capturing private data.
+- Serve lossless WebP copies of the original PNG artwork; retain original files and verify pixel equality when regenerating to preserve appearance.
+- Gate carousel image sources until their container approaches the viewport so skipped below-fold content does not compete with the main image.
