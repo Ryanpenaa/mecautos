@@ -83,6 +83,14 @@ function CtaButton({ children = "QUIERO EMPEZAR AHORA" }: { children?: string })
 function InfiniteCarousel({ slides, support = false }: { slides: { src: string; label: string }[]; support?: boolean }) {
   const container = useRef<HTMLDivElement>(null);
   const [nearViewport, setNearViewport] = useState(false);
+  const [settledSources, setSettledSources] = useState<Set<string>>(() => new Set());
+  const readyToAnimate = slides.every((slide) => settledSources.has(slide.src));
+  function settleSource(src: string) {
+    setSettledSources((current) => {
+      if (current.has(src)) return current;
+      return new Set([...current, src]);
+    });
+  }
   useEffect(() => {
     const element = container.current;
     if (!element) return;
@@ -94,14 +102,16 @@ function InfiniteCarousel({ slides, support = false }: { slides: { src: string; 
       if (!entry?.isIntersecting) return;
       setNearViewport(true);
       observer.disconnect();
-    }, { rootMargin: "600px" });
-    observer.observe(element);
+    }, { rootMargin: "1200px 0px" });
+    // Observe the section: content-visibility may skip the carousel's layout
+    // until the section itself approaches the viewport.
+    observer.observe(element.closest("section") ?? element);
     return () => observer.disconnect();
   }, []);
   const items = [...slides, ...slides];
   return (
     <div ref={container} className="carousel-mask overflow-hidden">
-      <div className={"carousel-track " + (support ? "carousel-track-slow" : "")}>
+      <div className={"carousel-track " + (support ? "carousel-track-slow " : "") + (readyToAnimate ? "" : "carousel-track-loading")}>
         {items.map((item, index) => (
           <div key={item.src + "-" + index} className={"relative shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-slate-900 shadow-xl " + (support ? "w-[220px] sm:w-[270px]" : "w-[270px] sm:w-[360px]")}>
             <div className={"flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800 " + (support ? "aspect-[4/5]" : "aspect-[16/10]")}>
@@ -111,11 +121,12 @@ function InfiniteCarousel({ slides, support = false }: { slides: { src: string; 
                 alt={item.label}
                 width={support ? 1055 : 1672}
                 height={support ? 1491 : 941}
-                loading="lazy"
+                loading={index < slides.length ? "eager" : "lazy"}
                 decoding="async"
-                fetchPriority="low"
+                fetchPriority={index < 3 ? "auto" : "low"}
                 className="absolute inset-0 h-full w-full object-cover"
-                onError={(e) => { e.currentTarget.style.display = "none"; }}
+                onLoad={() => settleSource(item.src)}
+                onError={(e) => { e.currentTarget.style.display = "none"; settleSource(item.src); }}
               />
             </div>
             <div className="border-t border-white/10 bg-slate-950/90 px-4 py-3 text-sm font-bold text-white">{item.label}</div>
@@ -181,6 +192,7 @@ function Index() {
         .carousel-mask { -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); }
         .carousel-track { display:flex; width:max-content; gap:1rem; animation:mec-scroll 32s linear infinite; }
         .carousel-track-slow { animation-duration:48s; }
+        .carousel-track-loading { animation-play-state:paused; }
         .carousel-track:hover { animation-play-state:paused; }
         .cv-auto { content-visibility:auto; contain-intrinsic-size:1px 900px; }
         @media (prefers-reduced-motion: reduce) {
