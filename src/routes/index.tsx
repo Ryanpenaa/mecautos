@@ -5,7 +5,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 
-export const Route = createFileRoute("/")({ component: Index, head: () => ({ meta: [{ title: "Formación en Mecánica Automotriz | MEC Autos" }, { name: "description", content: "Formación en mecánica automotriz desde cero: compara los planes, materiales y bonos de MEC Autos." }, { property: "og:title", content: "Formación en Mecánica Automotriz | MEC Autos" }, { property: "og:description", content: "Compara los planes de formación en mecánica automotriz y sus materiales de apoyo." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "preload", as: "image", href: "/mk.webp", fetchPriority: "high" }] }) });
+export const Route = createFileRoute("/")({ component: Index, head: () => ({ meta: [{ title: "Formación en Mecánica Automotriz | MEC Autos" }, { name: "description", content: "Formación en mecánica automotriz desde cero: compara los planes, materiales y bonos de MEC Autos." }, { property: "og:title", content: "Formación en Mecánica Automotriz | MEC Autos" }, { property: "og:description", content: "Compara los planes de formación en mecánica automotriz y sus materiales de apoyo." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "preload", as: "image", href: "/mk-960.webp", imageSrcSet: "/mk-640.webp 640w, /mk-960.webp 960w, /mk-1280.webp 1280w, /mk.webp 1448w", imageSizes: "(min-width: 1024px) 1008px, calc(100vw - 48px)", fetchPriority: "high" }] }) });
 
 const platformSlides = [
   { src: "/videoaula1.webp", label: "Plataforma por dentro" },
@@ -217,7 +217,9 @@ function Index() {
           </h1>
           <div className="mx-auto mt-7 max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 p-2 shadow-[0_30px_90px_rgba(0,0,0,.45)]">
             <img
-              src="/mk.webp"
+              src="/mk-960.webp"
+              srcSet="/mk-640.webp 640w, /mk-960.webp 960w, /mk-1280.webp 1280w, /mk.webp 1448w"
+              sizes="(min-width: 1024px) 1008px, calc(100vw - 48px)"
               width={1448}
               height={1086}
               alt="Mockup de la Formación en Mecánica Automotriz"
