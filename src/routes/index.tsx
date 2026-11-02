@@ -4,6 +4,7 @@ import {
   Infinity as InfinityIcon, PlayCircle, ShieldCheck, Star, Wrench
 } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import bannerAsset from "@/assets/banner-esp.webp.asset.json";
 
 export const Route = createFileRoute("/")({ component: Index, head: () => ({ meta: [{ title: "Formación en Mecánica Automotriz | MEC Autos" }, { name: "description", content: "Formación en mecánica automotriz desde cero: compara los planes, materiales y bonos de MEC Autos." }, { property: "og:title", content: "Formación en Mecánica Automotriz | MEC Autos" }, { property: "og:description", content: "Compara los planes de formación en mecánica automotriz y sus materiales de apoyo." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "preload", as: "image", href: "/mk-960.webp", imageSrcSet: "/mk-640.webp 640w, /mk-960.webp 960w, /mk-1280.webp 1280w, /mk.webp 1448w", imageSizes: "(min-width: 1024px) 1008px, calc(100vw - 48px)", fetchPriority: "high" }] }) });
 
@@ -290,6 +291,18 @@ function Index() {
             <span>✓ Acceso inmediato</span>
             <span>✓ Estudia a tu ritmo</span>
             <span>✓ Garantía de 7 días</span>
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <img
+              src={bannerAsset.url}
+              alt="Verificado por Hotmart • Compra 100% segura • Pago en tu moneda local"
+              width={768}
+              height={81}
+              loading="lazy"
+              decoding="async"
+              className="h-auto w-full max-w-[620px]"
+            />
           </div>
         </div>
       </section>
