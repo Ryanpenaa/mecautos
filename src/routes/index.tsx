@@ -1,20 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  BookOpen, Check, ChevronDown, Clock3, Gauge, GraduationCap,
-  Infinity as InfinityIcon, Laptop, PlayCircle, ShieldCheck, Smartphone, Star, Wrench
+  BookOpen, Check, ChevronDown, Gauge, GraduationCap,
+  Infinity as InfinityIcon, PlayCircle, ShieldCheck, Star, Wrench
 } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 
 export const Route = createFileRoute("/")({ component: Index, head: () => ({ meta: [{ title: "Formación en Mecánica Automotriz | MEC Autos" }, { name: "description", content: "Formación en mecánica automotriz desde cero: compara los planes, materiales y bonos de MEC Autos." }, { property: "og:title", content: "Formación en Mecánica Automotriz | MEC Autos" }, { property: "og:description", content: "Compara los planes de formación en mecánica automotriz y sus materiales de apoyo." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }], links: [{ rel: "preload", as: "image", href: "/mk-960.webp", imageSrcSet: "/mk-640.webp 640w, /mk-960.webp 960w, /mk-1280.webp 1280w, /mk.webp 1448w", imageSizes: "(min-width: 1024px) 1008px, calc(100vw - 48px)", fetchPriority: "high" }] }) });
-
-const platformSlides = [
-  { src: "/videoaula1.webp", label: "Plataforma por dentro" },
-  { src: "/videoaula2.webp", label: "Clases organizadas por módulos" },
-  { src: "/videoaula3.webp", label: "Sistema de frenos" },
-  { src: "/videoaula4.webp", label: "Diagnóstico eléctrico" },
-  { src: "/videoaula5.webp", label: "Materiales y recursos" },
-  { src: "/videoaula6.webp", label: "Certificado al concluir" },
-];
 
 const BASIC_CHECKOUT_URL = "https://pay.hotmart.com/B107921531Y?off=oba9nu0s&checkoutMode=10";
 const PROFESSIONAL_CHECKOUT_URL = "https://pay.hotmart.com/B107921531Y?off=6x5do37i&checkoutMode=10";
@@ -299,24 +290,6 @@ function Index() {
             <span>✓ Acceso inmediato</span>
             <span>✓ Estudia a tu ritmo</span>
             <span>✓ Garantía de 7 días</span>
-          </div>
-        </div>
-      </section>
-
-      <section className="cv-auto px-4 py-20">
-        <div className="mx-auto max-w-6xl">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Plataforma</p>
-            <h2 className="mt-2 text-3xl font-black sm:text-4xl">Estudia a tu ritmo, desde donde estés</h2>
-            <p className="mt-4 leading-7 text-slate-400">Mira la formación por dentro: clases en video organizadas por módulos, progreso guardado y materiales para descargar — todo desde celular, tablet o computadora.</p>
-          </div>
-          <div className="mt-10"><InfiniteCarousel slides={platformSlides} /></div>
-          <div className="mt-10 flex flex-col items-center"><CtaButton /><p className="mt-3 text-xs font-semibold text-slate-500">Acceso inmediato • Compra segura • Garantía de 7 días</p></div>
-          <div className="mx-auto mt-12 grid max-w-4xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {[[Laptop,"Acceso 100% online"],[Clock3,"Acceso inmediato"],[InfinityIcon,"Acceso de por vida"],[Smartphone,"Celular, tablet o computadora"]].map(([Icon,text], i) => {
-              const I = Icon as typeof Laptop;
-              return <div key={i} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[.035] p-4"><I className="h-5 w-5 shrink-0 text-emerald-400"/><span className="text-sm font-bold">{String(text)}</span></div>;
-            })}
           </div>
         </div>
       </section>

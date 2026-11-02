@@ -7,3 +7,7 @@
 - [x] Conferir quando as imagens começam a carregar.
 - [x] Priorizar as primeiras imagens e evitar espaços vazios durante a rolagem, mantendo os arquivos originais.
 - [x] Verificar os dois carrosséis com carregamento limitado e executar os testes.
+
+# Retirar a seção da plataforma
+- [x] Retirar a seção "Estudia a tu ritmo, desde donde estés" (carrossel da plataforma, etiquetas e selos) sem alterar o restante da página.
+- [x] Conferir a página sem a seção e executar os testes.
