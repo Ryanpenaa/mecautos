@@ -15,3 +15,7 @@
 # Selo de segurança da Hotmart
 - [x] Colocar a imagem enviada no final da seção "Tu formación completa", centralizada e integrada ao fundo da página.
 - [x] Conferir o selo no computador e no celular sem alterar os textos existentes.
+
+# Favicon da moeda
+- [x] Usar a moeda enviada como ícone da aba do navegador, recortada, redonda e com o fundo removido.
+- [x] Conferir o ícone pequeno sobre fundo claro e escuro e trocar o ícone padrão do site.
