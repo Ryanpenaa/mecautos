@@ -76,7 +76,7 @@ function InfiniteCarousel({ slides, support = false }: { slides: { src: string; 
   const container = useRef<HTMLDivElement>(null);
   const [nearViewport, setNearViewport] = useState(false);
   const [settledSources, setSettledSources] = useState<Set<string>>(() => new Set());
-  const readyToAnimate = slides.every((slide) => settledSources.has(slide.src));
+  const readyToAnimate = nearViewport && slides.slice(0, Math.min(2, slides.length)).every((slide) => settledSources.has(slide.src));
   function settleSource(src: string) {
     setSettledSources((current) => {
       if (current.has(src)) return current;
@@ -94,7 +94,7 @@ function InfiniteCarousel({ slides, support = false }: { slides: { src: string; 
       if (!entry?.isIntersecting) return;
       setNearViewport(true);
       observer.disconnect();
-    }, { rootMargin: "1200px 0px" });
+    }, { rootMargin: "450px 0px" });
     // Observe the section: content-visibility may skip the carousel's layout
     // until the section itself approaches the viewport.
     observer.observe(element.closest("section") ?? element);
@@ -113,9 +113,9 @@ function InfiniteCarousel({ slides, support = false }: { slides: { src: string; 
                 alt={item.label}
                 width={support ? 1055 : 1672}
                 height={support ? 1491 : 941}
-                loading={index < slides.length ? "eager" : "lazy"}
+                loading={index < 2 ? "eager" : "lazy"}
                 decoding="async"
-                fetchPriority={index < 3 ? "auto" : "low"}
+                fetchPriority={index < 2 ? "auto" : "low"}
                 className="absolute inset-0 h-full w-full object-cover"
                 onLoad={() => settleSource(item.src)}
                 onError={(e) => { e.currentTarget.style.display = "none"; settleSource(item.src); }}
