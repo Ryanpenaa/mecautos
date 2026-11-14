@@ -105,9 +105,9 @@ function InfiniteCarousel({ slides, support = false }: { slides: { src: string; 
     <div ref={container} className="carousel-mask overflow-hidden">
       <div className={"carousel-track " + (support ? "carousel-track-slow " : "") + (readyToAnimate ? "" : "carousel-track-loading")}>
         {items.map((item, index) => (
-          <div key={item.src + "-" + index} className={"relative shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-slate-900 shadow-xl " + (support ? "w-[220px] sm:w-[270px]" : "w-[270px] sm:w-[360px]")}>
-            <div className={"flex items-center justify-center bg-gradient-to-br from-slate-900 to-slate-800 " + (support ? "aspect-[4/5]" : "aspect-[16/10]")}>
-              <span className="max-w-[80%] text-center text-xs font-semibold text-slate-500">{item.label}</span>
+          <div key={item.src + "-" + index} className={"relative shrink-0 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl " + (support ? "w-[220px] sm:w-[270px]" : "w-[270px] sm:w-[360px]")}>
+            <div className={"flex items-center justify-center bg-gradient-to-br from-white to-slate-100 " + (support ? "aspect-[4/5]" : "aspect-[16/10]")}>
+              <span className="max-w-[80%] text-center text-xs font-semibold text-slate-600">{item.label}</span>
               <img
                 src={nearViewport ? item.src : undefined}
                 alt={item.label}
@@ -121,7 +121,7 @@ function InfiniteCarousel({ slides, support = false }: { slides: { src: string; 
                 onError={(e) => { e.currentTarget.style.display = "none"; settleSource(item.src); }}
               />
             </div>
-            <div className="border-t border-white/10 bg-slate-950/90 px-4 py-3 text-sm font-bold text-white">{item.label}</div>
+            <div className="border-t border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-900">{item.label}</div>
           </div>
         ))}
       </div>
@@ -178,7 +178,7 @@ function Index() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white selection:bg-emerald-400 selection:text-slate-950">
+    <main className="min-h-screen bg-white text-slate-900 selection:bg-emerald-400 selection:text-slate-950">
       <style>{`
         html { scroll-behavior: smooth; }
         .carousel-mask { -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); }
@@ -201,13 +201,13 @@ function Index() {
       <section className="relative overflow-hidden px-4 pb-16 pt-14 sm:pt-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-10%,rgba(16,185,129,.22),transparent_36%)]" />
         <div className="relative mx-auto max-w-5xl text-center">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-emerald-300">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-emerald-700">
             <GraduationCap className="h-4 w-4" /> Formación profesional 100% online
           </div>
           <h1 className="mx-auto max-w-4xl text-4xl font-black leading-[1.06] tracking-tight sm:text-6xl">
-            Conviértete en Mecánico Automotriz: <span className="text-emerald-400">desde cero hasta avanzado</span>
+            Conviértete en Mecánico Automotriz: <span className="text-emerald-700">desde cero hasta avanzado</span>
           </h1>
-          <div className="mx-auto mt-7 max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-slate-900/60 p-2 shadow-[0_30px_90px_rgba(0,0,0,.45)]">
+          <div className="mx-auto mt-7 max-w-5xl overflow-hidden rounded-3xl border border-slate-200 bg-white p-2 shadow-[0_30px_90px_rgba(0,0,0,.45)]">
             <img
               src="/mk-960.webp"
               srcSet="/mk-640.webp 640w, /mk-960.webp 960w, /mk-1280.webp 1280w, /mk.webp 1448w"
@@ -221,72 +221,72 @@ function Index() {
               className="aspect-[4/3] w-full rounded-2xl object-cover"
             />
           </div>
-          <p className="mx-auto mt-7 max-w-3xl text-lg font-semibold text-slate-200 sm:text-xl">
+          <p className="mx-auto mt-7 max-w-3xl text-lg font-semibold text-slate-700 sm:text-xl">
             Kit completo de Formación en Mecánica Automotriz: manuales, módulos y bonos.
           </p>
-          <div className="mt-8 flex flex-col items-center"><CtaButton /><p className="mt-3 text-xs font-semibold text-slate-500">Acceso inmediato • Compra segura • Garantía de 7 días</p></div>
+          <div className="mt-8 flex flex-col items-center"><CtaButton /><p className="mt-3 text-xs font-semibold text-slate-600">Acceso inmediato • Compra segura • Garantía de 7 días</p></div>
         </div>
       </section>
 
-      <section className="border-y border-white/10 bg-slate-900/50 px-4 py-16 sm:py-20">
+      <section className="border-y border-slate-200 bg-slate-50 px-4 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Tu formación completa</p>
+            <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-700">Tu formación completa</p>
             <h2 className="mt-2 text-3xl font-black sm:text-4xl">
               Todo lo que necesitas para aprender mecánica automotriz desde cero
             </h2>
-            <p className="mt-4 leading-7 text-slate-400">
+            <p className="mt-4 leading-7 text-slate-600">
               Aprende paso a paso, practica con contenido directo y consulta los materiales siempre que lo necesites.
             </p>
           </div>
 
           <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-2xl border border-white/10 bg-slate-950 p-6 shadow-lg">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-400/10">
-                <PlayCircle className="h-7 w-7 text-emerald-400" />
+                <PlayCircle className="h-7 w-7 text-emerald-700" />
               </div>
-              <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-emerald-300">Aprende viendo</p>
+              <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-emerald-700">Aprende viendo</p>
               <h3 className="mt-2 text-xl font-black">80+ clases prácticas en video</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-400">
+              <p className="mt-3 text-sm leading-6 text-slate-600">
                 Motor, frenos, suspensión, electricidad, inyección y diagnóstico explicados de forma directa.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-slate-950 p-6 shadow-lg">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-400/10">
-                <Gauge className="h-7 w-7 text-emerald-400" />
+                <Gauge className="h-7 w-7 text-emerald-700" />
               </div>
-              <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-emerald-300">Paso a paso</p>
+              <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-emerald-700">Paso a paso</p>
               <h3 className="mt-2 text-xl font-black">De principiante a nivel avanzado</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-400">
+              <p className="mt-3 text-sm leading-6 text-slate-600">
                 Empieza desde lo básico aunque nunca hayas trabajado con mecánica y avanza a tu propio ritmo.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-slate-950 p-6 shadow-lg">
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-400/10">
-                <BookOpen className="h-7 w-7 text-emerald-400" />
+                <BookOpen className="h-7 w-7 text-emerald-700" />
               </div>
-              <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-emerald-300">Consulta cuando quieras</p>
+              <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-emerald-700">Consulta cuando quieras</p>
               <h3 className="mt-2 text-xl font-black">Manuales, guías y checklists</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-400">
+              <p className="mt-3 text-sm leading-6 text-slate-600">
                 Materiales de apoyo para revisar procedimientos, diagnósticos y tareas prácticas dentro y fuera del taller.
               </p>
             </div>
 
-            <div className="rounded-2xl border border-emerald-400/20 bg-gradient-to-br from-emerald-400/[.08] to-slate-950 p-6 shadow-lg">
+            <div className="rounded-2xl border border-emerald-400/20 bg-gradient-to-br from-emerald-400/[.08] to-slate-50 p-6 shadow-lg">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-400/10">
-                <InfinityIcon className="h-7 w-7 text-emerald-400" />
+                <InfinityIcon className="h-7 w-7 text-emerald-700" />
               </div>
-              <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-emerald-300">Sin prisa</p>
+              <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-emerald-700">Sin prisa</p>
               <h3 className="mt-2 text-xl font-black">Acceso de por vida</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-400">
+              <p className="mt-3 text-sm leading-6 text-slate-600">
                 Estudia desde celular, tablet o computadora y vuelve a las clases todas las veces que necesites.
               </p>
             </div>
           </div>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-bold text-slate-500">
+          <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-bold text-slate-600">
             <span>✓ 100% online</span>
             <span>✓ Acceso inmediato</span>
             <span>✓ Estudia a tu ritmo</span>
@@ -307,12 +307,12 @@ function Index() {
         </div>
       </section>
 
-      <section className="cv-auto border-y border-white/10 bg-slate-900/50 px-4 py-20">
+      <section className="cv-auto border-y border-slate-200 bg-slate-50 px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Material de apoyo</p>
+            <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-700">Material de apoyo</p>
             <h2 className="mt-2 text-3xl font-black sm:text-4xl">Guías, manuales y checklists ilustrados</h2>
-            <p className="mt-4 leading-7 text-slate-400">Materiales creados para que puedas consultar los principales procedimientos siempre que lo necesites.</p>
+            <p className="mt-4 leading-7 text-slate-600">Materiales creados para que puedas consultar los principales procedimientos siempre que lo necesites.</p>
           </div>
           <div className="mt-10"><InfiniteCarousel slides={supportSlides} support /></div>
         </div>
@@ -320,10 +320,10 @@ function Index() {
 
       <section className="cv-auto px-4 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl text-center">
-          <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Bonos exclusivos</p>
+          <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-700">Bonos exclusivos</p>
           <h2 className="mt-2 text-3xl font-black sm:text-4xl">Incluidos en el Plan Profesional</h2>
 
-          <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-slate-950 p-2 shadow-2xl">
+          <div className="mx-auto mt-8 max-w-5xl overflow-hidden rounded-3xl border border-slate-200 bg-white p-2 shadow-2xl">
             <img
               src="/bonus.webp"
               width={1448}
@@ -336,31 +336,31 @@ function Index() {
             />
           </div>
 
-          <div className="mt-5 text-3xl font-black tracking-wide text-emerald-400 sm:text-4xl">
+          <div className="mt-5 text-3xl font-black tracking-wide text-emerald-700 sm:text-4xl">
             ¡GRATIS!
           </div>
         </div>
       </section>
 
-      <section id="planes" className="cv-auto border-y border-white/10 bg-slate-900/50 px-4 py-20">
+      <section id="planes" className="cv-auto border-y border-slate-200 bg-slate-50 px-4 py-20">
         <div className="mx-auto max-w-5xl">
-          <div className="text-center"><p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Planes</p><h2 className="mt-2 text-3xl font-black sm:text-4xl">Elige cómo quieres comenzar</h2><p className="mt-3 text-slate-400">Elige el Plan Básico o la formación completa.</p></div>
+          <div className="text-center"><p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-700">Planes</p><h2 className="mt-2 text-3xl font-black sm:text-4xl">Elige cómo quieres comenzar</h2><p className="mt-3 text-slate-600">Elige el Plan Básico o la formación completa.</p></div>
           <div className="mt-10 grid items-start gap-6 lg:grid-cols-2">
-            <div className="rounded-3xl border border-white/10 bg-slate-950 p-7">
-              <p className="text-sm font-bold text-slate-400">Para quien quiere comenzar</p><h3 className="mt-2 text-2xl font-black">Plan Básico</h3><div className="mt-5 text-5xl font-black">US$5</div><p className="mt-2 text-xs font-semibold text-slate-500">El valor se convierte automáticamente a tu moneda al momento del pago.</p>
-              <div className="mt-6 space-y-3">{["80+ clases en video","Contenido 100% online","Acceso de por vida"].map((x)=><div key={x} className="flex gap-3 text-sm font-semibold"><Check className="h-5 w-5 text-emerald-400"/>{x}</div>)}</div>
+            <div className="rounded-3xl border border-slate-200 bg-white p-7">
+              <p className="text-sm font-bold text-slate-600">Para quien quiere comenzar</p><h3 className="mt-2 text-2xl font-black">Plan Básico</h3><div className="mt-5 text-5xl font-black">US$5</div><p className="mt-2 text-xs font-semibold text-slate-600">El valor se convierte automáticamente a tu moneda al momento del pago.</p>
+              <div className="mt-6 space-y-3">{["80+ clases en video","Contenido 100% online","Acceso de por vida"].map((x)=><div key={x} className="flex gap-3 text-sm font-semibold"><Check className="h-5 w-5 text-emerald-700"/>{x}</div>)}</div>
               <a
                 href={`/oferta-especial${typeof window !== "undefined" ? window.location.search : ""}`}
 
-                className="mt-7 inline-flex w-full items-center justify-center rounded-xl border border-white/20 px-5 py-4 text-sm font-black hover:bg-white/5"
+                className="mt-7 inline-flex w-full items-center justify-center rounded-xl border border-slate-300 px-5 py-4 text-sm font-black hover:bg-slate-100"
               >
                 EMPEZAR CON EL BÁSICO
               </a>
             </div>
-            <div className="relative rounded-3xl border-2 border-emerald-400 bg-slate-950 p-7 shadow-[0_20px_70px_rgba(16,185,129,.18)]">
+            <div className="relative rounded-3xl border-2 border-emerald-400 bg-white p-7 shadow-[0_20px_70px_rgba(16,185,129,.18)]">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-emerald-400 px-5 py-2 text-xs font-black text-slate-950">FORMACIÓN COMPLETA</div>
-              <p className="mt-2 text-sm font-bold text-emerald-300">Formación completa + materiales</p><h3 className="mt-2 text-2xl font-black">Plan Profesional</h3><div className="mt-5 text-5xl font-black">US$13</div><p className="mt-2 text-xs font-semibold text-slate-500">El valor se convierte automáticamente a tu moneda al momento del pago.</p>
-              <div className="mt-6 space-y-3">{["80+ clases en video","Certificado de finalización","Acceso de por vida","Materiales de apoyo","10 bonos incluidos","5 manuales complementarios"].map((x)=><div key={x} className="flex gap-3 text-sm font-semibold"><Check className="h-5 w-5 text-emerald-400"/>{x}</div>)}</div>
+              <p className="mt-2 text-sm font-bold text-emerald-700">Formación completa + materiales</p><h3 className="mt-2 text-2xl font-black">Plan Profesional</h3><div className="mt-5 text-5xl font-black">US$13</div><p className="mt-2 text-xs font-semibold text-slate-600">El valor se convierte automáticamente a tu moneda al momento del pago.</p>
+              <div className="mt-6 space-y-3">{["80+ clases en video","Certificado de finalización","Acceso de por vida","Materiales de apoyo","10 bonos incluidos","5 manuales complementarios"].map((x)=><div key={x} className="flex gap-3 text-sm font-semibold"><Check className="h-5 w-5 text-emerald-700"/>{x}</div>)}</div>
               <p className="mt-4 text-sm font-bold">Nuestra recomendación para quien quiere aprovechar la formación completa.</p>
               {PROFESSIONAL_CHECKOUT_URL ? <a
                 href={buildCheckoutUrl(PROFESSIONAL_CHECKOUT_URL)}
@@ -371,7 +371,7 @@ function Index() {
                 })}
                 className="mt-7 inline-flex min-h-14 w-full items-center justify-center rounded-xl bg-emerald-500 px-5 py-4 text-center text-sm font-black text-white hover:bg-emerald-400"
               >QUIERO EL PLAN COMPLETO</a> : <div role="status" className="mt-7 rounded-xl border border-amber-300/30 bg-amber-300/10 p-4 text-center text-sm font-bold text-amber-200">Plan Profesional de US$13: enlace de pago pendiente de configuración.</div>}
-              <p className="mt-3 text-center text-xs font-semibold text-slate-500">Acceso inmediato • Compra segura • Garantía de 7 días</p>
+              <p className="mt-3 text-center text-xs font-semibold text-slate-600">Acceso inmediato • Compra segura • Garantía de 7 días</p>
             </div>
           </div>
         </div>
@@ -380,16 +380,16 @@ function Index() {
       <section className="cv-auto px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <div className="text-center">
-            <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Testimonios</p>
+            <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-700">Testimonios</p>
             <h2 className="mt-2 text-3xl font-black sm:text-4xl">Experiencias de nuestros alumnos</h2>
-            <p className="mx-auto mt-4 max-w-3xl text-slate-400">
+            <p className="mx-auto mt-4 max-w-3xl text-slate-600">
               Opiniones compartidas sobre la experiencia de aprendizaje dentro de la formación.
             </p>
           </div>
 
           <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {testimonials.map((item) => (
-              <article key={item.name} className="rounded-2xl border border-white/10 bg-slate-900 p-5 shadow-lg">
+              <article key={item.name} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-lg">
                 <div className="flex items-center gap-3">
                   <img
                     src={item.image}
@@ -401,8 +401,8 @@ function Index() {
                     className="h-14 w-14 rounded-full border-2 border-emerald-400/30 object-cover"
                   />
                   <div>
-                    <p className="font-black text-white">{item.name}</p>
-                    <p className="text-xs text-slate-500">Alumno • Mecánica Automotriz</p>
+                    <p className="font-black text-slate-900">{item.name}</p>
+                    <p className="text-xs text-slate-600">Alumno • Mecánica Automotriz</p>
                   </div>
                 </div>
 
@@ -412,18 +412,18 @@ function Index() {
                   ))}
                 </div>
 
-                <p className="mt-4 text-sm leading-6 text-slate-300">
+                <p className="mt-4 text-sm leading-6 text-slate-700">
                   “{item.text}”
                 </p>
               </article>
             ))}
           </div>
 
-          <div className="mx-auto mt-12 max-w-2xl rounded-3xl border border-white/10 bg-slate-900/70 p-6 sm:p-8">
+          <div className="mx-auto mt-12 max-w-2xl rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
             <div className="text-center">
-              <p className="text-sm font-black uppercase tracking-[0.14em] text-emerald-400">Tu opinión también cuenta</p>
+              <p className="text-sm font-black uppercase tracking-[0.14em] text-emerald-700">Tu opinión también cuenta</p>
               <h3 className="mt-2 text-2xl font-black">Deja tu testimonio</h3>
-              <p className="mt-2 text-sm leading-6 text-slate-400">
+              <p className="mt-2 text-sm leading-6 text-slate-600">
                 Cuéntanos brevemente cómo fue tu experiencia con la formación.
               </p>
             </div>
@@ -437,7 +437,7 @@ function Index() {
                 required
                 maxLength={60}
                 placeholder="Tu nombre"
-                className="w-full rounded-xl border border-white/10 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-emerald-400 disabled:cursor-not-allowed disabled:opacity-50"
+                className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-600 focus:border-emerald-400 disabled:cursor-not-allowed disabled:opacity-50"
               />
               <textarea
                 value={reviewText}
@@ -447,11 +447,11 @@ function Index() {
                 maxLength={500}
                 rows={5}
                 placeholder="Escribe tu testimonio aquí..."
-                className="w-full resize-none rounded-xl border border-white/10 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-600 focus:border-emerald-400 disabled:cursor-not-allowed disabled:opacity-50"
+                className="w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-600 focus:border-emerald-400 disabled:cursor-not-allowed disabled:opacity-50"
               />
 
               {reviewSent ? (
-                <div className="rounded-xl border border-emerald-400/20 bg-emerald-400/10 px-4 py-4 text-center text-sm font-bold text-emerald-300">
+                <div className="rounded-xl border border-emerald-400/20 bg-emerald-400/10 px-4 py-4 text-center text-sm font-bold text-emerald-700">
                   ✓ Testimonio enviado. ¡Gracias por compartir tu experiencia!
                 </div>
               ) : (
@@ -467,29 +467,29 @@ function Index() {
         </div>
       </section>
 
-      <section className="cv-auto border-y border-white/10 bg-slate-900/50 px-4 py-20">
+      <section className="cv-auto border-y border-slate-200 bg-slate-50 px-4 py-20">
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Alumnos certificados</p>
+            <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-700">Alumnos certificados</p>
             <h2 className="mt-2 text-3xl font-black sm:text-4xl">Personas que ya completaron su formación</h2>
-            <p className="mt-4 leading-7 text-slate-400">
+            <p className="mt-4 leading-7 text-slate-600">
               Al finalizar el Plan Profesional, el alumno puede obtener su certificado de finalización.
             </p>
           </div>
-          <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-white/10 bg-slate-950 p-2 shadow-2xl">
+          <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-white p-2 shadow-2xl">
             <img src="/certificado2.webp" width={1254} height={1254} alt="Alumnos certificados en Mecánica Automotriz" loading="lazy" decoding="async" fetchPriority="low" className="aspect-square w-full rounded-2xl object-cover" />
           </div>
           <div className="mt-8 flex flex-col items-center">
             <CtaButton>QUIERO HACER PARTE</CtaButton>
-            <p className="mt-3 text-xs font-semibold text-slate-500">Formación online • Acceso de por vida • Certificado en el Plan Profesional</p>
+            <p className="mt-3 text-xs font-semibold text-slate-600">Formación online • Acceso de por vida • Certificado en el Plan Profesional</p>
           </div>
         </div>
       </section>
 
-      <section className="cv-auto border-y border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 px-4 py-20">
+      <section className="cv-auto border-y border-slate-200 bg-gradient-to-br from-white to-slate-50 px-4 py-20">
         <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
-          <div><p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Profesional</p><h2 className="mt-2 text-3xl font-black sm:text-4xl">Aprende una profesión que está presente en todas las ciudades</h2><p className="mt-5 leading-7 text-slate-400">Con la Formación en Mecánica Automotriz, desarrollas una base práctica para cuidar mejor tu vehículo y comenzar a buscar oportunidades en el área.</p><div className="mt-7"><CtaButton /></div></div>
-          <div className="overflow-hidden rounded-3xl border border-white/10 bg-slate-900 p-3 shadow-xl">
+          <div><p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-700">Profesional</p><h2 className="mt-2 text-3xl font-black sm:text-4xl">Aprende una profesión que está presente en todas las ciudades</h2><p className="mt-5 leading-7 text-slate-600">Con la Formación en Mecánica Automotriz, desarrollas una base práctica para cuidar mejor tu vehículo y comenzar a buscar oportunidades en el área.</p><div className="mt-7"><CtaButton /></div></div>
+          <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white p-3 shadow-xl">
             <img src="/certificado1.webp" width={1448} height={1086} alt="Certificado de finalización de la Formación en Mecánica Automotriz" loading="lazy" decoding="async" className="aspect-[4/3] h-full w-full rounded-2xl object-cover" />
           </div>
         </div>
@@ -497,34 +497,34 @@ function Index() {
 
       <section className="cv-auto px-4 py-20">
         <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
-          <div className="rounded-3xl border border-emerald-400/20 bg-emerald-400/[.06] p-7 sm:p-9"><ShieldCheck className="h-10 w-10 text-emerald-400"/><h2 className="mt-5 text-2xl font-black">7 DÍAS DE GARANTÍA</h2><p className="mt-3 leading-7 text-slate-400">Puedes evaluar el contenido dentro del período de garantía y solicitar el reembolso según las condiciones de la compra.</p></div>
-          <div className="rounded-3xl border border-white/10 bg-slate-900 p-7 sm:p-9">
+          <div className="rounded-3xl border border-emerald-400/20 bg-emerald-400/[.06] p-7 sm:p-9"><ShieldCheck className="h-10 w-10 text-emerald-700"/><h2 className="mt-5 text-2xl font-black">7 DÍAS DE GARANTÍA</h2><p className="mt-3 leading-7 text-slate-600">Puedes evaluar el contenido dentro del período de garantía y solicitar el reembolso según las condiciones de la compra.</p></div>
+          <div className="rounded-3xl border border-slate-200 bg-white p-7 sm:p-9">
             <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:text-left">
               <img src="/perfil.webp" width={1254} height={1254} alt="João Emanuel, instructor de Mecánica Automotriz" loading="lazy" decoding="async" className="h-24 w-24 shrink-0 rounded-full border-2 border-emerald-400/30 object-cover sm:h-28 sm:w-28" />
               <div>
-                <p className="text-sm font-black uppercase tracking-[0.14em] text-emerald-400">Conoce a tu instructor</p>
+                <p className="text-sm font-black uppercase tracking-[0.14em] text-emerald-700">Conoce a tu instructor</p>
                 <h2 className="mt-2 text-2xl font-black">João Emanuel</h2>
-                <p className="mt-3 leading-7 text-slate-400">Profesional del sector automotriz con 16 años de experiencia. João Emanuel reúne conocimiento práctico en mecánica, mantenimiento y diagnóstico de vehículos.</p>
+                <p className="mt-3 leading-7 text-slate-600">Profesional del sector automotriz con 16 años de experiencia. João Emanuel reúne conocimiento práctico en mecánica, mantenimiento y diagnóstico de vehículos.</p>
               </div>
             </div>
-            <p className="mt-4 text-center leading-7 text-slate-400 sm:text-left">En esta formación comparte ese conocimiento de forma simple, directa y paso a paso, especialmente para quien comienza desde cero.</p>
-            <div className="mt-6 flex flex-wrap justify-center gap-2 text-xs font-black sm:justify-start">{["16 años de experiencia","Contenido práctico","Enseñanza directa"].map((x)=><span key={x} className="rounded-full border border-white/10 bg-slate-950 px-3 py-2">{x}</span>)}</div>
+            <p className="mt-4 text-center leading-7 text-slate-600 sm:text-left">En esta formación comparte ese conocimiento de forma simple, directa y paso a paso, especialmente para quien comienza desde cero.</p>
+            <div className="mt-6 flex flex-wrap justify-center gap-2 text-xs font-black sm:justify-start">{["16 años de experiencia","Contenido práctico","Enseñanza directa"].map((x)=><span key={x} className="rounded-full border border-slate-200 bg-white px-3 py-2">{x}</span>)}</div>
           </div>
         </div>
       </section>
 
-      <section className="cv-auto border-y border-white/10 bg-slate-900/50 px-4 py-20">
+      <section className="cv-auto border-y border-slate-200 bg-slate-50 px-4 py-20">
         <div className="mx-auto max-w-4xl">
-          <div className="text-center"><p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-400">Preguntas frecuentes</p><h2 className="mt-2 text-3xl font-black sm:text-4xl">Resuelve tus dudas</h2></div>
-          <div className="mt-8 space-y-3">{faqs.map(([q,a])=><details key={q} className="group rounded-2xl border border-white/10 bg-slate-950 p-5"><summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">{q}<ChevronDown className="h-5 w-5 shrink-0 text-emerald-400 transition group-open:rotate-180"/></summary><p className="mt-4 pr-8 text-sm leading-6 text-slate-400">{a}</p></details>)}</div>
+          <div className="text-center"><p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-700">Preguntas frecuentes</p><h2 className="mt-2 text-3xl font-black sm:text-4xl">Resuelve tus dudas</h2></div>
+          <div className="mt-8 space-y-3">{faqs.map(([q,a])=><details key={q} className="group rounded-2xl border border-slate-200 bg-white p-5"><summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-bold">{q}<ChevronDown className="h-5 w-5 shrink-0 text-emerald-700 transition group-open:rotate-180"/></summary><p className="mt-4 pr-8 text-sm leading-6 text-slate-600">{a}</p></details>)}</div>
         </div>
       </section>
 
       <section className="cv-auto px-4 py-20 text-center">
-        <div className="mx-auto max-w-3xl"><Wrench className="mx-auto h-10 w-10 text-emerald-400"/><h2 className="mt-5 text-3xl font-black sm:text-4xl">Comienza hoy a desarrollar una nueva habilidad</h2><p className="mt-4 text-slate-400">Accede a la Formación en Mecánica Automotriz y comienza tus primeras clases.</p><div className="mt-8 flex flex-col items-center"><CtaButton /><p className="mt-3 text-xs font-semibold text-slate-500">Acceso inmediato • Acceso de por vida • Garantía de 7 días</p></div></div>
+        <div className="mx-auto max-w-3xl"><Wrench className="mx-auto h-10 w-10 text-emerald-700"/><h2 className="mt-5 text-3xl font-black sm:text-4xl">Comienza hoy a desarrollar una nueva habilidad</h2><p className="mt-4 text-slate-600">Accede a la Formación en Mecánica Automotriz y comienza tus primeras clases.</p><div className="mt-8 flex flex-col items-center"><CtaButton /><p className="mt-3 text-xs font-semibold text-slate-600">Acceso inmediato • Acceso de por vida • Garantía de 7 días</p></div></div>
       </section>
 
-      <footer className="border-t border-white/10 px-4 py-8 text-center text-xs text-slate-600">© 2026 Formación en Mecánica Automotriz. Todos los derechos reservados.</footer>
+      <footer className="border-t border-slate-200 px-4 py-8 text-center text-xs text-slate-600">© 2026 Formación en Mecánica Automotriz. Todos los derechos reservados.</footer>
     </main>
   );
 }
