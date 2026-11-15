@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  BookOpen, Check, ChevronDown, Gauge, GraduationCap,
-  Infinity as InfinityIcon, PlayCircle, ShieldCheck, Star, Wrench
+  Check, ChevronDown, GraduationCap, ShieldCheck, Star, Wrench
 } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import bannerAsset from "@/assets/banner-esp.webp.asset.json";
