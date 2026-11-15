@@ -240,50 +240,18 @@ function Index() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-400/10">
-                <PlayCircle className="h-7 w-7 text-emerald-700" />
-              </div>
-              <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-emerald-700">Aprende viendo</p>
-              <h3 className="mt-2 text-xl font-black">80+ clases prácticas en video</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-600">
-                Motor, frenos, suspensión, electricidad, inyección y diagnóstico explicados de forma directa.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-400/10">
-                <Gauge className="h-7 w-7 text-emerald-700" />
-              </div>
-              <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-emerald-700">Paso a paso</p>
-              <h3 className="mt-2 text-xl font-black">De principiante a nivel avanzado</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-600">
-                Empieza desde lo básico aunque nunca hayas trabajado con mecánica y avanza a tu propio ritmo.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-400/10">
-                <BookOpen className="h-7 w-7 text-emerald-700" />
-              </div>
-              <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-emerald-700">Consulta cuando quieras</p>
-              <h3 className="mt-2 text-xl font-black">Manuales, guías y checklists</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-600">
-                Materiales de apoyo para revisar procedimientos, diagnósticos y tareas prácticas dentro y fuera del taller.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-emerald-400/20 bg-gradient-to-br from-emerald-400/[.08] to-slate-50 p-6 shadow-lg">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-400/10">
-                <InfinityIcon className="h-7 w-7 text-emerald-700" />
-              </div>
-              <p className="mt-5 text-xs font-black uppercase tracking-[0.12em] text-emerald-700">Sin prisa</p>
-              <h3 className="mt-2 text-xl font-black">Acceso de por vida</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-600">
-                Estudia desde celular, tablet o computadora y vuelve a las clases todas las veces que necesites.
-              </p>
-            </div>
+          <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 shadow-xl">
+            <video
+              className="aspect-video w-full bg-slate-950 object-contain"
+              controls
+              playsInline
+              preload="none"
+              poster="/mk-960.webp"
+              aria-label="Presentación en video de la Formación en Mecánica Automotriz"
+            >
+              <source src="/mecanica-latam-web-720p.mp4" type="video/mp4" />
+              Tu navegador no admite la reproducción de este video.
+            </video>
           </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-bold text-slate-600">
