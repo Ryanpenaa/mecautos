@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
-  Check, ChevronDown, GraduationCap, ShieldCheck, Star, Wrench
+  Check, ChevronDown, GraduationCap, Play, ShieldCheck, Star, Wrench
 } from "lucide-react";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import bannerAsset from "@/assets/banner-esp.webp.asset.json";
@@ -158,6 +158,8 @@ function Index() {
   const [reviewName, setReviewName] = useState("");
   const [reviewText, setReviewText] = useState("");
   const [reviewSent, setReviewSent] = useState(false);
+  const [videoStarted, setVideoStarted] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     trackMetaEvent("ViewContent", {
@@ -239,18 +241,58 @@ function Index() {
             </p>
           </div>
 
-          <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 shadow-xl">
-            <video
-              className="aspect-video w-full bg-slate-950 object-contain"
-              controls
-              playsInline
-              preload="none"
-              poster="/mk-960.webp"
-              aria-label="Presentación en video de la Formación en Mecánica Automotriz"
-            >
-              <source src="/mecanica-latam-web-720p.mp4" type="video/mp4" />
-              Tu navegador no admite la reproducción de este video.
-            </video>
+          <div className="mx-auto mt-10 max-w-4xl">
+            <div className="mb-4 flex flex-col items-center gap-2 text-center">
+              <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 text-xs font-black uppercase tracking-wider text-emerald-800">
+                <Play className="h-3.5 w-3.5 fill-current" /> Mira la formación por dentro
+              </span>
+              <p className="text-sm font-medium text-slate-600">
+                Descubre en 40 segundos las clases, la plataforma y los materiales de apoyo.
+              </p>
+            </div>
+            <div className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white p-1.5 shadow-[0_22px_65px_rgba(15,23,42,.18)] sm:p-2.5">
+              <div className="relative overflow-hidden rounded-[1.35rem] bg-slate-950">
+                <video
+                  ref={videoRef}
+                  className="aspect-video w-full bg-slate-950 object-contain"
+                  controls={videoStarted}
+                  playsInline
+                  preload="none"
+                  poster="/mk-960.webp"
+                  aria-label="Presentación de 40 segundos de la Formación en Mecánica Automotriz"
+                  onPlay={() => setVideoStarted(true)}
+                >
+                  <source src="/mecanica-latam-web-720p.mp4" type="video/mp4" />
+                  Tu navegador no admite la reproducción de este video.
+                </video>
+                {!videoStarted && (
+                  <button
+                    type="button"
+                    aria-label="Reproducir presentación de la formación"
+                    onClick={() => {
+                      setVideoStarted(true);
+                      void videoRef.current?.play();
+                    }}
+                    className="group absolute inset-0 flex flex-col items-center justify-center gap-4 bg-slate-950/25 transition hover:bg-slate-950/35 focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-[-4px] focus-visible:outline-emerald-400"
+                  >
+                    <span className="flex h-20 w-20 items-center justify-center rounded-full border-4 border-white/80 bg-emerald-500 text-white shadow-[0_8px_35px_rgba(0,0,0,.45)] transition-transform group-hover:scale-110 sm:h-24 sm:w-24">
+                      <Play className="ml-1 h-9 w-9 fill-current sm:h-11 sm:w-11" />
+                    </span>
+                    <span className="rounded-full bg-slate-950/80 px-4 py-2 text-sm font-black text-white shadow-lg">
+                      ▶ VER VIDEO · 40 SEGUNDOS
+                    </span>
+                  </button>
+                )}
+              </div>
+              <div className="flex flex-wrap items-center justify-between gap-2 px-3 py-3 sm:px-5">
+                <span className="text-sm font-bold text-slate-800">Así funciona tu formación online</span>
+                <span className="text-xs font-semibold text-slate-500">Video corto · 40 s</span>
+              </div>
+            </div>
+            <div className="mt-6 flex flex-col items-center gap-2 text-center">
+              <CtaButton>QUIERO COMENZAR MI FORMACIÓN</CtaButton>
+              <p className="text-xs font-semibold text-slate-500">Acceso inmediato · Estudia a tu ritmo</p>
+            </div>
           </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-bold text-slate-600">
