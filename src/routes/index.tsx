@@ -63,9 +63,9 @@ function Countdown() {
   return <span className="font-black tabular-nums">{min}:{sec}</span>;
 }
 
-function CtaButton({ children = "QUIERO EMPEZAR AHORA" }: { children?: string }) {
+function CtaButton({ children = "QUIERO EMPEZAR AHORA", href = "#planes" }: { children?: string; href?: string }) {
   return (
-    <a href="#planes" className="inline-flex min-h-14 w-full max-w-md items-center justify-center rounded-xl bg-emerald-500 px-6 py-4 text-center text-sm font-black tracking-wide text-white shadow-[0_10px_30px_rgba(16,185,129,.32)] transition hover:-translate-y-0.5 hover:bg-emerald-400 sm:text-base">
+    <a href={href} className="inline-flex min-h-14 w-full max-w-md items-center justify-center rounded-xl bg-emerald-500 px-6 py-4 text-center text-sm font-black tracking-wide text-white shadow-[0_10px_30px_rgba(16,185,129,.32)] transition hover:-translate-y-0.5 hover:bg-emerald-400 sm:text-base">
       {children}
     </a>
   );
@@ -225,7 +225,7 @@ function Index() {
           <p className="mx-auto mt-7 max-w-3xl text-lg font-semibold text-slate-700 sm:text-xl">
             Kit completo de Formación en Mecánica Automotriz: manuales, módulos y bonos.
           </p>
-          <div className="mt-8 flex flex-col items-center"><CtaButton /><p className="mt-3 text-xs font-semibold text-slate-600">Acceso inmediato • Compra segura • Garantía de 7 días</p></div>
+          <div className="mt-8 flex flex-col items-center"><CtaButton href="#bonos" /><p className="mt-3 text-xs font-semibold text-slate-600">Acceso inmediato • Compra segura • Garantía de 7 días</p></div>
         </div>
       </section>
 
@@ -327,7 +327,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="cv-auto px-4 py-16 sm:py-20">
+      <section id="bonos" className="cv-auto scroll-mt-8 px-4 py-16 sm:py-20">
         <div className="mx-auto max-w-6xl text-center">
           <p className="text-sm font-black uppercase tracking-[0.16em] text-emerald-700">Bonos exclusivos</p>
           <h2 className="mt-2 text-3xl font-black sm:text-4xl">Incluidos en el Plan Profesional</h2>
