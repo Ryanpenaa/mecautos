@@ -225,7 +225,7 @@ function Index() {
           <p className="mx-auto mt-7 max-w-3xl text-lg font-semibold text-slate-700 sm:text-xl">
             Kit completo de Formación en Mecánica Automotriz: manuales, módulos y bonos.
           </p>
-          <div className="mt-8 flex flex-col items-center"><CtaButton href="#bonos" /><p className="mt-3 text-xs font-semibold text-slate-600">Acceso inmediato • Compra segura • Garantía de 7 días</p></div>
+          <div className="mt-8 flex flex-col items-center"><CtaButton href="#bonos" /></div>
         </div>
       </section>
 
@@ -246,9 +246,6 @@ function Index() {
               <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 text-xs font-black uppercase tracking-wider text-emerald-800">
                 <Play className="h-3.5 w-3.5 fill-current" /> Mira la formación por dentro
               </span>
-              <p className="text-sm font-medium text-slate-600">
-                Descubre en 40 segundos las clases, la plataforma y los materiales de apoyo.
-              </p>
             </div>
             <div className="overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white p-1.5 shadow-[0_22px_65px_rgba(15,23,42,.18)] sm:p-2.5">
               <div className="relative overflow-hidden rounded-[1.35rem] bg-slate-950">
@@ -291,15 +288,7 @@ function Index() {
             </div>
             <div className="mt-6 flex flex-col items-center gap-2 text-center">
               <CtaButton>QUIERO COMENZAR MI FORMACIÓN</CtaButton>
-              <p className="text-xs font-semibold text-slate-500">Acceso inmediato · Estudia a tu ritmo</p>
             </div>
-          </div>
-
-          <div className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs font-bold text-slate-600">
-            <span>✓ 100% online</span>
-            <span>✓ Acceso inmediato</span>
-            <span>✓ Estudia a tu ritmo</span>
-            <span>✓ Garantía de 7 días</span>
           </div>
 
           <div className="mt-10 flex justify-center">
