@@ -369,7 +369,6 @@ function Index() {
                 })}
                 className="mt-7 inline-flex min-h-14 w-full items-center justify-center rounded-xl bg-emerald-500 px-5 py-4 text-center text-sm font-black text-white hover:bg-emerald-400"
               >QUIERO EL PLAN COMPLETO</a> : <div role="status" className="mt-7 rounded-xl border border-amber-300/30 bg-amber-300/10 p-4 text-center text-sm font-bold text-amber-200">Plan Profesional de US$13: enlace de pago pendiente de configuración.</div>}
-              <p className="mt-3 text-center text-xs font-semibold text-slate-600">Acceso inmediato • Compra segura • Garantía de 7 días</p>
             </div>
           </div>
         </div>
